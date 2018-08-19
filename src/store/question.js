@@ -9,7 +9,8 @@ const getQuestions = questions => ({
 
 export const fetchQuestions = () => async dispatch => {
   try {
-    const questions = await axios.get('http://localhost:8080/api/questions')
+    const questions = await axios.get(
+      `${process.env.REACT_APP_API_URL}api/questions`)
     dispatch(getQuestions(questions.data))
   } catch (err) {
     console.log(err)

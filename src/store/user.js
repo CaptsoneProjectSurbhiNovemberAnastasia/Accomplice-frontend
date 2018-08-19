@@ -22,14 +22,14 @@ const getUser = user => ({
 
 export const me = () => dispatch =>
   axios
-    .get('http://localhost:8080/auth/me')
+    .get(`${process.env.REACT_APP_API_URL}auth/me`)
     .then(res => dispatch(getUser(res.data || defaultUser)))
     .catch(err => console.log(err))
 
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
-    res = await axios.post(`http://localhost:8080/auth/${method}`, {
+    res = await axios.post(`${process.env.REACT_APP_API_URL}auth/${method}`, {
       email,
       password,
     })
@@ -50,7 +50,7 @@ export const auth = (email, password, method) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    await axios.post('http://localhost:8080/auth/logout')
+    await axios.post(`${process.env.REACT_APP_API_URL}auth/logout`)
     dispatch(logOutUser())
     localStorage.clear()
     history.push('/')
@@ -64,7 +64,7 @@ export const updateUser = updateInfo => async dispatch => {
     console.log(updateInfo)
     const id = updateInfo.id
     const { data } = await axios.put(
-      `http://localhost:8080/api/user/${id}`,
+      `${process.env.REACT_APP_API_URL}api/user/${id}`,
       updateInfo
     )
     dispatch(getUser(data))
@@ -76,7 +76,7 @@ export const updateUser = updateInfo => async dispatch => {
 export const deleteAccount = userId => dispatch => {
   dispatch(logOutUser())
   axios
-    .delete(`http://localhost:8080/api/userAccount/${userId}`)
+    .delete(`${process.env.REACT_APP_API_URL}api/userAccount/${userId}`)
     .catch(err => console.log(err))
 }
 
