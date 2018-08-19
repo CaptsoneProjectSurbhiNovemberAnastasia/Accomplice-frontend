@@ -10,7 +10,7 @@ const getTraitValues = userTraits => ({
 
 export const setTraitValues = userTraitValues => async dispatch => {
   try {
-    const { data } = await axios.post('http://localhost:8080/api/user/traits', {
+    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}api/user/traits`, {
       userTraitValues,
     })
     dispatch(getTraitValues(data))
