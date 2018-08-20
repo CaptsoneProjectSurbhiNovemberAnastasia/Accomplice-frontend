@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { auth } from '../store'
-import logo from '../styles/logo.png'
+import logo from '../styles/logo_try.png'
 
 /**
  * COMPONENT

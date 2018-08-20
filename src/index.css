@@ -4,6 +4,8 @@
 *:focus {
   outline: none;
 }
+*{font-family: 'Montserrat', sans-serif;}
+
 
 html {
   -webkit-touch-callout: none;
@@ -17,7 +19,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: #fff;
 }
@@ -31,7 +33,7 @@ li {
 }
 
 h1 {
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 70px;
   margin: 20px;
 }
@@ -69,7 +71,7 @@ h2 {
   width: 100vw;
 }
 .bg-color {
-  background-color: rgb(13, 89, 212) !important;
+  background-color: #782fff !important;
 }
 .flexwrap {
   flex-wrap: nowrap !important;
@@ -224,7 +226,7 @@ h2 {
 }
 
 .userTypesText {
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   left: -35px;
   bottom: -5px;
@@ -438,7 +440,7 @@ h2 {
   text-align: left;
   background: linear-gradient(white, white), no-repeat center center fixed;
   background-size: cover;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -485,7 +487,7 @@ h2 {
   margin: 0 0 20px;
   padding: 10px 15px;
   border: 1px solid #ccc;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 400;
   transition: 0.2s linear;
@@ -501,7 +503,7 @@ h2 {
   width: 100%;
   padding: 10px 15px;
   color: #fff;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 400;
   transition: all 0.5s ease;
@@ -538,7 +540,7 @@ h2 {
   padding: 6px;
 }
 .form .checkboxes div label {
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: calc(22px + 1.5vw);
 }
 .form textarea {
@@ -670,13 +672,13 @@ input[type='checkbox']:checked {
   color: white;
 }
 .matchesList .userCard h1 {
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 42px;
   margin: 8px 0 8px 0;
 }
 .matchesList .userCard h2 {
   font-size: 16px;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   line-height: 0;
 }
 .matchesList .userCard:hover {
@@ -761,7 +763,7 @@ input[type='checkbox']:checked {
 }
 .userProfile h4 {
   text-align: left;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 36px;
   margin: 15px 0 4px 0;
   line-height: 36px;
@@ -774,7 +776,7 @@ input[type='checkbox']:checked {
   max-width: 600px;
   margin: auto;
   text-align: right;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 22px;
 }
 .userProfile .userButtons button {
@@ -787,7 +789,7 @@ input[type='checkbox']:checked {
   margin: 2em 1em 2em 1em;
   padding: 12px 15px;
   color: #fff;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 400;
   transition: all 0.5s ease;
@@ -840,7 +842,7 @@ input[type='checkbox']:checked {
 }
 
 .email-signature {
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 38px;
 }
 
@@ -867,13 +869,13 @@ input[type='checkbox']:checked {
 
 .email-greeting {
   color: #0e6463;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 40px;
 }
 
 h5 {
   margin: 3px;
-  font-family: 'sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-size: 30px;
 }
 
@@ -893,7 +895,7 @@ html {
 body {
   margin: 0 auto;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
 }
 
@@ -1028,11 +1030,11 @@ h2 {
   .geoLoc {
     border-radius: 15px;
     cursor: pointer;
-    background: rgb(13, 89, 212);
+    background: #782fff;
     width: 60%;
     padding: 10px 15px;
     color: #fff;
-    font-family: 'sans-serif';
+    font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 400;
     transition: all 0.5s ease;
@@ -1056,11 +1058,11 @@ h2 {
   .geoLoc {
     border-radius: 15px;
     cursor: pointer;
-    background: rgb(13, 89, 212);
+    background: #782fff;
     width: 45%;
     padding: 10px 15px;
     color: #fff;
-    font-family: 'sans-serif';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     transition: all 0.5s ease;
     margin-top: 10px;
