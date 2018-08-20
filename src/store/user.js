@@ -20,11 +20,38 @@ const getUser = user => ({
 
 // THUNK CREATORS
 
-export const me = () => dispatch =>
-  axios
-    .get(`${process.env.REACT_APP_API_URL}auth/me`)
-    .then(res => dispatch(getUser(res.data || defaultUser)))
-    .catch(err => console.log(err))
+export const me = () => async dispatch => {
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}auth/me`)
+    const {
+      activity,
+      age,
+      description,
+      email,
+      facebookId,
+      firstName,
+      lastName,
+      id,
+      latitude,
+      longitude,
+    } = data
+    const user = {
+      activity,
+      age,
+      description,
+      email,
+      facebookId,
+      firstName,
+      lastName,
+      id,
+      latitude,
+      longitude,
+    }
+    dispatch(getUser(user || defaultUser))
+  } catch (e) {
+    console.error(e)
+  }
+}
 
 export const auth = (email, password, method) => async dispatch => {
   let res

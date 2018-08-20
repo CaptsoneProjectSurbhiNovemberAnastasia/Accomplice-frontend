@@ -6,9 +6,11 @@ export const GET_MATCHES = 'GET_MATCHES',
 const getMatches = matches => ({ type: GET_MATCHES, matches }),
   addMatch = match => ({ type: ADD_MATCH, match })
 
-export const fetchMatches = id => async dispatch => {
+export const fetchMatches = () => async dispatch => {
   try {
-    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}api/matches`)
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_URL}api/matches`
+    )
     dispatch(getMatches(data))
   } catch (e) {
     console.error(e)
@@ -17,8 +19,9 @@ export const fetchMatches = id => async dispatch => {
 
 export const matchWith = id => async dispatch => {
   try {
-    const { data } = await axios.post
-    (`${process.env.REACT_APP_API_URL}api/matches/${id}`)
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API_URL}api/matches/${id}`
+    )
     if (data !== 'OK') {
       dispatch(addMatch(data))
     }
