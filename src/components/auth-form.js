@@ -13,6 +13,7 @@ const AuthForm = props => {
   const { error } = props
   let type
   const responseFacebook = response => {
+    console.log('Inside responseFacebook', response)
     facebookLogin(response)
   }
   const componentClicked = response => {
@@ -73,8 +74,8 @@ const AuthForm = props => {
               fields="name,email,picture"
               onClick={componentClicked}
               callback={responseFacebook}
-              cssClass="my-facebook-button-class"
-              icon="fa-facebook mr-4"
+              // cssClass="my-facebook-button-class"
+              // icon="fa-facebook mr-4"
               // icon={<SocialIcon url="http://facebook.com/in/jaketrent" />}
             />
           </div>
@@ -141,6 +142,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     dispatch(auth(email, password, type))
   },
   facebookLogin: response => {
+    console.log('dispatching gfacebooklogin')
     const type = 'facebookLogin'
     const email = response.email
     const name = response.name
