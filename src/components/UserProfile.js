@@ -29,13 +29,12 @@ class UserProfile extends Component {
               <UserProfileForm
                 user={user}
                 handleSubmit={this.props.handleSubmit}
-                handleClick={this.props.handleClick}
               />
             ) : (
               <div className="mb-2" />
             )}
             <NavLink to="/options"><button className="button">Update Activity and Tags</button></NavLink>
-            <button className="btnWidth" type="button" onClick={this.handleClick}>
+            <button className="btnWidth" type="button" onClick={this.props.handleClick}>
               Logout
             </button>
           </div>
