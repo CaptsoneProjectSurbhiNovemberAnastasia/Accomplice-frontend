@@ -24,7 +24,6 @@ export const me = () => async dispatch => {
   try {
     const { data } = await axios.get(`${process.env.REACT_APP_API_URL}auth/me`)
     const {
-      activity,
       age,
       description,
       email,
@@ -32,11 +31,11 @@ export const me = () => async dispatch => {
       firstName,
       lastName,
       id,
+      imageUrl,
       latitude,
       longitude
     } = data
     const user = {
-      activity,
       age,
       description,
       email,
@@ -44,6 +43,7 @@ export const me = () => async dispatch => {
       firstName,
       lastName,
       id,
+      imageUrl,
       latitude,
       longitude
     }
@@ -87,7 +87,7 @@ export const facebookauth = (
       firstName,
       imageUrl
     })
-    console.log('Response from facebook calle is ', res)
+    console.log('Response from facebook is ', res)
   } catch (authError) {
     return dispatch(getUser({ error: authError }))
   }
