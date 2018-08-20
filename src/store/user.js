@@ -12,10 +12,10 @@ const defaultUser = {}
 // ACTION CREATORS
 const getUser = user => ({
     type: GET_USER,
-    user,
+    user
   }),
   logOutUser = () => ({
-    type: LOGOUT_USER,
+    type: LOGOUT_USER
   })
 
 // THUNK CREATORS
@@ -33,7 +33,7 @@ export const me = () => async dispatch => {
       lastName,
       id,
       latitude,
-      longitude,
+      longitude
     } = data
     const user = {
       activity,
@@ -45,7 +45,7 @@ export const me = () => async dispatch => {
       lastName,
       id,
       latitude,
-      longitude,
+      longitude
     }
     dispatch(getUser(user || defaultUser))
   } catch (e) {
@@ -58,7 +58,7 @@ export const auth = (email, password, method) => async dispatch => {
   try {
     res = await axios.post(`${process.env.REACT_APP_API_URL}auth/${method}`, {
       email,
-      password,
+      password
     })
   } catch (authError) {
     return dispatch(getUser({ error: authError }))
@@ -74,7 +74,35 @@ export const auth = (email, password, method) => async dispatch => {
     console.error(dispatchOrHistoryErr)
   }
 }
-
+export const facebookauth = (
+  email,
+  firstName,
+  imageUrl,
+  method
+) => async dispatch => {
+  let res
+  try {
+    res = await axios.post(`http://localhost:8080/auth/${method}`, {
+      email,
+      firstName,
+      imageUrl
+    })
+    console.log('Response from facebook calle is ', res)
+  } catch (authError) {
+    return dispatch(getUser({ error: authError }))
+  }
+  try {
+    console.log('passing data  ', res.data)
+    dispatch(getUser(res.data))
+    if (res.data.firstName === null) {
+      history.push('/profile')
+    } else {
+      history.push('/question')
+    }
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr)
+  }
+}
 export const logout = () => async dispatch => {
   try {
     await axios.post(`${process.env.REACT_APP_API_URL}auth/logout`)
