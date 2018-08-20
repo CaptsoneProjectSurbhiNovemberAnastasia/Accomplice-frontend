@@ -67,7 +67,7 @@ const AuthForm = props => {
                 </button>
               </div>
             </form>
-            {console.log(process.env.REACT_APP_FACEBOOK_APP_ID)}
+            {console.log(typeof process.env.REACT_APP_FACEBOOK_APP_ID)}
             {/*login form with google*/}
             <FacebookLogin
               appId={process.env.REACT_APP_FACEBOOK_APP_ID}
