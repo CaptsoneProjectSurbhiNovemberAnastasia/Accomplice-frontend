@@ -18,8 +18,8 @@ class UserProfile extends Component {
       <div className="form nopadding">
         <div className="form">
           <div className=" ">
+            <h2>Hi {user.firstName}!</h2>
             <img src={user.imageUrl} alt="" />
-            <h2>Hi {user.firstName}</h2>
           </div>
           <div>
             <button onClick={() => this.setState({ editing: !editing })}>
@@ -34,7 +34,10 @@ class UserProfile extends Component {
             ) : (
               <div className="mb-2" />
             )}
-            <NavLink to="/options">Options</NavLink>
+            <NavLink to="/options"><button className="button">Options</button></NavLink>
+            <button className="btnWidth" type="button" onClick={this.handleClick}>
+              Logout
+            </button>
           </div>
         </div>
       </div>

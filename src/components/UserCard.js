@@ -42,7 +42,6 @@ class UserCard extends Component {
                   }. This activity is ${activityTags}.`
                 : `doesn't know what they want to do.`}
             </p>
-            <button onClick={this.handleClick}>Match!</button>
           </li>
         </div>
       </div>

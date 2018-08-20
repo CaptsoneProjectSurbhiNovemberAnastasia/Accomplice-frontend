@@ -88,7 +88,7 @@ h2 {
   margin: 15px !important;
 }
 .goBtn {
-  background-color: rgb(13, 89, 212) !important;
+  background-color: #782fff !important;
   color: white;
 }
 
@@ -475,7 +475,7 @@ h2 {
 .form h2 {
   margin: 0 0 20px;
   line-height: 1;
-  color: #0e6463;
+  color: #782fff;
   font-size: 18px;
   font-weight: 400;
 }
@@ -499,7 +499,7 @@ h2 {
 .form div button {
   border-radius: 15px;
   cursor: pointer;
-  background: rgb(13, 89, 212);
+  background: #782fff;
   width: 100%;
   padding: 10px 15px;
   color: #fff;
@@ -618,7 +618,7 @@ h2 {
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab {
   color: black;
-  border-color: rgb(13, 89, 212);
+  border-color:#782fff;
 }
 
 .login-html
@@ -1140,4 +1140,23 @@ h2 {
     padding-right: 15px;
     padding-left: 15px;
   }
+}
+
+button {
+border-radius: 15px;
+cursor: pointer;
+background: #782fff;
+width: 100%;
+padding: 10px 15px;
+color: #fff;
+font-family: 'Montserrat', sans-serif;
+font-size: 16px;
+font-weight: 400;
+-webkit-transition: all 0.5s ease;
+-o-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+a {
+  color: #fff;
 }
