@@ -41,7 +41,6 @@ const AuthForm = props => {
         </label>
         <div className="login-form">
           <div className="sign-in-htm">
-            {/*login form*/}
             <form onSubmit={event => handleSubmit(event, type)}>
               <div className="group">
                 <label htmlFor="email">
@@ -67,21 +66,15 @@ const AuthForm = props => {
                 </button>
               </div>
             </form>
-            {console.log(typeof process.env.REACT_APP_FACEBOOK_APP_ID)}
-            {/*login form with google*/}
             <FacebookLogin
               appId={process.env.REACT_APP_FACEBOOK_APP_ID}
               autoLoad={false}
               fields="name,email,picture"
               onClick={componentClicked}
               callback={responseFacebook}
-              // cssClass="my-facebook-button-class"
-              // icon="fa-facebook mr-4"
-              // icon={<SocialIcon url="http://facebook.com/in/jaketrent" />}
             />
           </div>
           <div className="sign-up-htm">
-            {/*signup form */}
             <form onSubmit={event => handleSubmit(event, type)}>
               <div className="group">
                 <label htmlFor="email">
@@ -96,13 +89,6 @@ const AuthForm = props => {
                 </label>
                 <input name="password" type="password" />
               </div>
-
-              <div className="group">
-                {/* <label htmlFor="password">
-                  <small>Verify Password</small>
-                </label>
-                <input name="password" type="password" /> */}
-              </div>
               <div className="group">
                 <button
                   type="submit"
@@ -113,16 +99,6 @@ const AuthForm = props => {
                   Sign Up
                 </button>
               </div>
-              {/* error && error.response && <div> {error.response.data} </div> */}
-              {/* <div className="social-container">
-                <span>or Sign up with </span>
-                <a href="/auth/google">
-                  <FontAwesome name="google" className="social google" />
-                </a>
-                <a href="/auth/facebook">
-                  <FontAwesome name="facebook" className="social facebook" />
-                </a>
-              </div> */}
             </form>
           </div>
         </div>
