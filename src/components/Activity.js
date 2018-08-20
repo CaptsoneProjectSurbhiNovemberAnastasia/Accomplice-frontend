@@ -20,7 +20,7 @@ class Activity extends Component {
   handleSubmit = evt => {
     evt.preventDefault()
     this.props.chooseActivity(this.state.activity)
-    this.props.onClick()
+    if (this.props.onClick) this.props.onClick()
   }
 
   render() {
