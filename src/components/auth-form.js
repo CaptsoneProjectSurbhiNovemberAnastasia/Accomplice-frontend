@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import logo from '../styles/logo_try.png'
 import { auth, facebookauth } from '../store'
-import logo from '../styles/logo.png'
 import FacebookLogin from 'react-facebook-login'
 
 /**

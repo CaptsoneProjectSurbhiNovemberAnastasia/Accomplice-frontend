@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserProfileForm = props => {
-  const { handleClick, handleSubmit, user } = props
+  const { handleSubmit, user } = props
 
   return (
     <form
@@ -61,9 +61,6 @@ const UserProfileForm = props => {
           <div className="form-button row btnInline ">
             <button className="btnWidth" type="submit">
               Save Changes
-            </button>
-            <button className="btnWidth" type="button" onClick={handleClick}>
-              Logout
             </button>
           </div>
         </div>

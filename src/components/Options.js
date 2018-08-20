@@ -30,14 +30,14 @@ class Options extends Component {
             <div>
               Your Activity is: {activity ? activity.name : 'Loading...'}
             </div>
-            <button onClick={() => this.setState({ editingActivity: true })}>
+            <button className="button"onClick={() => this.setState({ editingActivity: true })}>
               Edit Your Activity
             </button>
           </div>
         )}
-        <NavLink to="/quiz" className="pt-2">
+        <NavLink to="/quiz" className="pt-2"><button className="button">
           Retake Personality Quiz
-        </NavLink>
+          </button></NavLink>
       </div>
     )
   }
