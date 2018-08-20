@@ -72,6 +72,7 @@ const AuthForm = props => {
               fields="name,email,picture"
               onClick={componentClicked}
               callback={responseFacebook}
+              cssClass="my-facebook-button-class"
             />
           </div>
           <div className="sign-up-htm">
