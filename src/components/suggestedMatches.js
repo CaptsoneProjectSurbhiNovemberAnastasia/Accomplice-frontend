@@ -20,9 +20,12 @@ class SuggestedMatches extends Component {
   }
 
   filterSuggestedMatches = (matches, user) => {
-    if (user.activity) {
-      const yourActivityTagIds = user.activity.tags.map(tag => tag.id)
-      console.log('inside if ')
+    const { activity, tags } = this.props
+
+    if (activity && activity.name) {
+      const yourActivityTagIds = tags
+        .filter(tag => tag.activity)
+        .map(tag => tag.id)
       return matches.filter(
         match =>
           match.activityId &&
@@ -31,18 +34,14 @@ class SuggestedMatches extends Component {
               yourActivityTagIds.includes(tag.id)
             ))
       )
-    } else if (this.props.tags.some(tag => tag.selected)) {
-      console.log('inside elseif ')
-      const selectedTagIds = this.props.tags
-        .filter(tag => tag.selected)
-        .map(tag => tag.id)
+    } else if (tags.some(tag => tag.selected)) {
+      const selectedTagIds = tags.filter(tag => tag.selected).map(tag => tag.id)
       return matches.filter(
         match =>
           match.activityId &&
           match.activity.tags.some(tag => selectedTagIds.includes(tag.id))
       )
     } else {
-      console.log('inside else ')
       return matches
     }
   }
@@ -63,7 +62,7 @@ class SuggestedMatches extends Component {
       Array.isArray(suggestedMatches) &&
       suggestedMatches.length === 0
     ) {
-      return <div>No matches found.</div>
+      return <div>Finding people...</div>
     } else {
       const filteredSuggestedMatches = this.filterSuggestedMatches(
         suggestedMatches,
@@ -107,6 +106,7 @@ const mapState = state => {
     suggestedMatches: state.suggestedMatches,
     currentUser: state.user,
     tags: state.tags,
+    activity: state.activity,
   }
 }
 
