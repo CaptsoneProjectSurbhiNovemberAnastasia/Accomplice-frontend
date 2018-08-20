@@ -4,8 +4,9 @@
 *:focus {
   outline: none;
 }
-*{font-family: 'Montserrat', sans-serif;}
-
+* {
+  font-family: 'Montserrat', sans-serif;
+}
 
 html {
   -webkit-touch-callout: none;
@@ -44,6 +45,17 @@ h2 {
 }
 .my-facebook-button-class {
   margin-top: 10px;
+}
+.block {
+  display: block !important;
+}
+.selectInline {
+  display: inline;
+}
+
+.selectWidth {
+  width: 40%;
+  margin-left: 30%;
 }
 #singleMatchContainer {
   background-size: cover;
@@ -92,6 +104,7 @@ h2 {
 .goBtn {
   background-color: #782fff !important;
   color: white;
+  margin-left: 20px;
 }
 
 .flex {
@@ -439,7 +452,7 @@ h2 {
 
 .splash,
 .splash::before {
-  text-align: left;
+  text-align: center;
   background: linear-gradient(white, white), no-repeat center center fixed;
   background-size: cover;
   font-family: 'Montserrat', sans-serif;
@@ -502,7 +515,7 @@ h2 {
   border-radius: 15px;
   cursor: pointer;
   background: #782fff;
-  width: 100%;
+  width: 80%;
   padding: 10px 15px;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
@@ -620,7 +633,7 @@ h2 {
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab {
   color: black;
-  border-color:#782fff;
+  border-color: #782fff;
 }
 
 .login-html
@@ -1029,24 +1042,27 @@ h2 {
     width: 16vh;
     margin: 10px;
   }
+  /* selectWidth {
+    width: 70% !important;
+    margin-left: 15% !important;
+  } */
   .geoLoc {
     border-radius: 15px;
     cursor: pointer;
     background: #782fff;
-    width: 60%;
+    width: auto;
     padding: 10px 15px;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     font-weight: 400;
     transition: all 0.5s ease;
-    margin-top: 10px;
   }
 }
 /* For Medium size devices */
 @media screen and (min-width: 800px) {
   .geoLoc {
-    width: 25%;
+    width: auto;
   }
 }
 /* For Big Devices */
@@ -1061,13 +1077,13 @@ h2 {
     border-radius: 15px;
     cursor: pointer;
     background: #782fff;
-    width: 45%;
+    width: auto;
     padding: 10px 15px;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     transition: all 0.5s ease;
-    margin-top: 10px;
+    margin-top: -80px;
   }
   #questionForm {
     text-align: center;
@@ -1145,18 +1161,18 @@ h2 {
 }
 
 button {
-border-radius: 15px;
-cursor: pointer;
-background: #782fff;
-width: 100%;
-padding: 10px 15px;
-color: #fff;
-font-family: 'Montserrat', sans-serif;
-font-size: 16px;
-font-weight: 400;
--webkit-transition: all 0.5s ease;
--o-transition: all 0.5s ease;
-transition: all 0.5s ease;
+  border-radius: 15px;
+  cursor: pointer;
+  background: #782fff;
+  width: auto;
+  padding: 10px 15px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 a {

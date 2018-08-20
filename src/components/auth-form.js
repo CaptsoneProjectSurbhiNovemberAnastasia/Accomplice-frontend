@@ -74,7 +74,7 @@ const AuthForm = props => {
               fields="name,email,picture"
               onClick={componentClicked}
               callback={responseFacebook}
-              // cssClass="my-facebook-button-class"
+              cssClass="my-facebook-button-class"
               // icon="fa-facebook mr-4"
               // icon={<SocialIcon url="http://facebook.com/in/jaketrent" />}
             />
