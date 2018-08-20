@@ -34,7 +34,7 @@ class UserProfile extends Component {
             ) : (
               <div className="mb-2" />
             )}
-            <NavLink to="/options"><button className="button">Options</button></NavLink>
+            <NavLink to="/options"><button className="button">Update Activity and Tags</button></NavLink>
             <button className="btnWidth" type="button" onClick={this.handleClick}>
               Logout
             </button>
