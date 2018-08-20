@@ -1,16 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { auth } from '../store'
+import { auth, facebookauth } from '../store'
 import logo from '../styles/logo.png'
+import FacebookLogin from 'react-facebook-login'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
-  const { handleSubmit } = props
+  const { handleSubmit, facebookLogin } = props
   const { error } = props
   let type
+  const responseFacebook = response => {
+    console.log('Inside responseFacebook', response)
+    facebookLogin(response)
+  }
+  const componentClicked = response => {
+    console.log('Inside componentClicked', response)
+  }
   return (
     <div className="splash">
       <div className="form animated flipInX login-html">
@@ -60,15 +68,16 @@ const AuthForm = props => {
               </div>
             </form>
             {/*login form with google*/}
-            {/* <div className="social-container">
-              <span>or Log in with </span>
-              <a href="/auth/google">
-                <FontAwesome name="google" className="social google" />
-              </a>
-              <a href="/auth/facebook">
-                <FontAwesome name="facebook" className="social facebook" />
-              </a>
-            </div> */}
+            <FacebookLogin
+              appId="293209674769158"
+              autoLoad={false}
+              fields="name,email,picture"
+              onClick={componentClicked}
+              callback={responseFacebook}
+              // cssClass="my-facebook-button-class"
+              // icon="fa-facebook mr-4"
+              // icon={<SocialIcon url="http://facebook.com/in/jaketrent" />}
+            />
           </div>
           <div className="sign-up-htm">
             {/*signup form */}
@@ -122,7 +131,7 @@ const AuthForm = props => {
 }
 
 const mapState = state => ({
-  error: state.user.error,
+  error: state.user.error
 })
 
 const mapDispatch = (dispatch, ownProps) => ({
@@ -132,6 +141,15 @@ const mapDispatch = (dispatch, ownProps) => ({
     const password = evt.target.password.value
     dispatch(auth(email, password, type))
   },
+  facebookLogin: response => {
+    console.log('dispatching gfacebooklogin')
+    const type = 'facebookLogin'
+    const email = response.email
+    const name = response.name
+    const imageUrl = response.picture.data.url
+
+    dispatch(facebookauth(email, name, imageUrl, type))
+  }
 })
 
 export default withRouter(

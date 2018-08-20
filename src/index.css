@@ -40,7 +40,9 @@ h1,
 h2 {
   font-weight: 500;
 }
-
+.my-facebook-button-class {
+  margin-top: 10px;
+}
 #singleMatchContainer {
   background-size: cover;
   position: relative;
