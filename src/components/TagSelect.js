@@ -4,14 +4,14 @@ import Select from 'react-select'
 
 class TagSelect extends Component {
   state = {
-    selectedOptions: [],
+    selectedOptions: []
   }
 
   componentDidMount() {
     this.setState({
       selectedOptions: this.props.tags
         .filter(tag => (this.props.activity ? tag.activity : tag.selected))
-        .map(tag => this.mapTagToSelectElement(tag)),
+        .map(tag => this.mapTagToSelectElement(tag))
     })
   }
 
@@ -24,7 +24,7 @@ class TagSelect extends Component {
     value: tag.name.toLowerCase(),
     label: tag.name,
     id: tag.id,
-    key: tag.id,
+    key: tag.id
   })
 
   render() {
@@ -36,7 +36,7 @@ class TagSelect extends Component {
       options = tags.map(tag => this.mapTagToSelectElement(tag))
     }
     return (
-      <div className="group row">
+      <div className="group row selectInline">
         <div htmlFor="question col-6">{text}</div>
         <div className="inlineBtn">
           <Select
@@ -53,6 +53,6 @@ class TagSelect extends Component {
 }
 
 const mapState = state => ({
-  tags: state.tags,
+  tags: state.tags
 })
 export default connect(mapState)(TagSelect)

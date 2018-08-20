@@ -111,7 +111,7 @@ const mapState = state => ({
   error: state.user.error
 })
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = dispatch => ({
   handleSubmit: (evt, type) => {
     evt.preventDefault()
     const email = evt.target.email.value

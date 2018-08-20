@@ -30,14 +30,17 @@ class Options extends Component {
             <div>
               Your Activity is: {activity ? activity.name : 'Loading...'}
             </div>
-            <button className="button"onClick={() => this.setState({ editingActivity: true })}>
+            <button
+              className="button"
+              onClick={() => this.setState({ editingActivity: true })}
+            >
               Edit Your Activity
             </button>
           </div>
         )}
-        <NavLink to="/quiz" className="pt-2"><button className="button">
-          Retake Personality Quiz
-          </button></NavLink>
+        <NavLink to="/quiz" className="pt-2">
+          <button className="button">Retake Personality Quiz</button>
+        </NavLink>
       </div>
     )
   }
@@ -45,7 +48,7 @@ class Options extends Component {
 
 const mapState = state => ({ activity: state.activity })
 const mapDispatch = dispatch => ({
-  chooseTags: tags => dispatch(setTags(tags)),
+  chooseTags: tags => dispatch(setTags(tags))
 })
 export default connect(
   mapState,

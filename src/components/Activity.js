@@ -12,7 +12,7 @@ class Activity extends Component {
 
   handleChange = evt => {
     this.setState({
-      [evt.target.name]: evt.target.value,
+      [evt.target.name]: evt.target.value
     })
   }
 
@@ -28,7 +28,7 @@ class Activity extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="activity col-6">
+          <label htmlFor="activity col-6" className="block">
             <div>
               {editing ? 'Your Activity: ' : 'What are you going to do today?'}
             </div>
@@ -44,11 +44,14 @@ class Activity extends Component {
             {editing ? 'Set' : 'Go!'}
           </button>
         </form>
-        <TagSelect
-          text="Tag your activity:"
-          tagMethod={this.props.chooseActivityTags}
-          activity={true}
-        />
+        <div className="selectWidth">
+          <TagSelect
+            className="mb-2"
+            text="Tag your activity: "
+            tagMethod={this.props.chooseActivityTags}
+            activity={true}
+          />
+        </div>
       </div>
     )
   }
@@ -60,7 +63,7 @@ const mapDispatch = dispatch => ({
   },
   chooseActivityTags: tags => {
     dispatch(setActivityTags(tags))
-  },
+  }
 })
 
 export default connect(
