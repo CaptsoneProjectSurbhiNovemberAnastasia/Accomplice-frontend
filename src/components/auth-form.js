@@ -72,12 +72,6 @@ const AuthForm = props => {
               fields="name,email,picture"
               onClick={componentClicked}
               callback={responseFacebook}
-<<<<<<< HEAD
-              cssClass="my-facebook-button-class"
-              // icon="fa-facebook mr-4"
-              // icon={<SocialIcon url="http://facebook.com/in/jaketrent" />}
-=======
->>>>>>> master
             />
           </div>
           <div className="sign-up-htm">
@@ -117,7 +111,7 @@ const mapState = state => ({
   error: state.user.error
 })
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = dispatch => ({
   handleSubmit: (evt, type) => {
     evt.preventDefault()
     const email = evt.target.email.value
