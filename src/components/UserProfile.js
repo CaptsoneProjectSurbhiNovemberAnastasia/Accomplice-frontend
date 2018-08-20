@@ -22,7 +22,11 @@ class UserProfile extends Component {
             <img src={user.imageUrl} alt="" />
           </div>
           <div>
-            <button onClick={() => this.setState({ editing: !editing })}>
+            <button
+              className="mb-2 mt-2"
+              type="button"
+              onClick={() => this.setState({ editing: !editing })}
+            >
               {editing ? 'Done' : 'Edit Profile'}{' '}
             </button>
             {editing ? (
@@ -33,8 +37,16 @@ class UserProfile extends Component {
             ) : (
               <div className="mb-2" />
             )}
-            <NavLink to="/options"><button className="button">Update Activity and Tags</button></NavLink>
-            <button className="btnWidth" type="button" onClick={this.props.handleClick}>
+            <NavLink to="/options">
+              <button type="button" className="button">
+                Update Activity and Tags
+              </button>
+            </NavLink>
+            <button
+              className="btnWidth"
+              type="button"
+              onClick={this.props.handleClick}
+            >
               Logout
             </button>
           </div>

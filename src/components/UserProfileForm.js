@@ -59,7 +59,7 @@ const UserProfileForm = props => {
             />
           </div>
           <div className="form-button row btnInline ">
-            <button className="btnWidth" type="submit">
+            <button className="btnWidth1 ml-3" type="submit">
               Save Changes
             </button>
           </div>
