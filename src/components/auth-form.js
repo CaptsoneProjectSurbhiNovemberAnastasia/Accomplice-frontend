@@ -69,7 +69,7 @@ const AuthForm = props => {
             </form>
             {/*login form with google*/}
             <FacebookLogin
-              appId="293209674769158"
+              appId={process.env.FACEBOOK_APP_ID}
               autoLoad={false}
               fields="name,email,picture"
               onClick={componentClicked}
