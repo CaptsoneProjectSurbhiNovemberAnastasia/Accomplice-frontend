@@ -7,8 +7,7 @@ class Activity extends Component {
   state = { activity: '' }
 
   componentDidMount() {
-    if (this.props.activity)
-      this.setState({ activity: this.props.activity.name })
+    if (this.props.activity) this.setState({ activity: this.props.activity.name })
   }
 
   handleChange = evt => {
@@ -38,7 +37,6 @@ class Activity extends Component {
             name="activity"
             type="text"
             placeholder="e.g. Go on a hike"
-            value={this.state.activity}
             onChange={this.handleChange}
           />
 
