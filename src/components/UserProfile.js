@@ -23,11 +23,9 @@ class UserProfile extends Component {
   async handleSubmit(evt, user) {
     evt.preventDefault()
     const id = user.id
-
     const firstName = evt.target.firstName.value
     const lastName = evt.target.lastName.value
     const age = evt.target.age.value
-
     const description = evt.target.description.value
 
     const formData = new FormData()
@@ -48,8 +46,8 @@ class UserProfile extends Component {
       <div>
         {user.id && !user.firstName ? (
           <div>
-            <h2>Welcome to Accomplice!</h2>
-            <h4>
+            <h2 className="h2font">Welcome to Accomplice!</h2>
+            <h4 className="h4font">
               Please edit your profile below before taking our personality quiz
               and swiping for matches.
             </h4>
@@ -61,7 +59,7 @@ class UserProfile extends Component {
         )}
         <div className="form nopadding">
           <div className="form">
-            <div className=" ">
+            <div className="imgsize ">
               {user.imageUrl === '#' ? (
                 <img src="/no_profile_pic.png" alt="" />
               ) : (
@@ -70,7 +68,7 @@ class UserProfile extends Component {
             </div>
             <div>
               <button
-                className="mb-2 mt-2"
+                className="mb-1 mt-1 btnfontsize"
                 type="button"
                 onClick={() => this.setState({ editing: !editing })}
               >
@@ -84,21 +82,21 @@ class UserProfile extends Component {
                   handleFileUpload={this.handleFileUpload}
                 />
               ) : (
-                <div className="mb-2" />
+                <div />
               )}
               <NavLink to="/options">
-                <button type="button" className="button">
+                <button type="button" className="button mb-1 mt-1 btnfontsize">
                   Change Activity and Tags
                 </button>
               </NavLink>
               {}
-              <NavLink to="/quiz" className="pt-2">
-                <button type="button" className="button">
+              <NavLink to="/quiz" className="">
+                <button type="button" className="button mb-1 mt-1 btnfontsize">
                   Personality Quiz
                 </button>
               </NavLink>
               <button
-                className="btnWidth"
+                className="button mb-1 mt-1 btnfontsize"
                 type="button"
                 onClick={this.props.handleClick}
               >
@@ -115,7 +113,7 @@ class UserProfile extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    s3ImageUrl: state.awsupload,
+    s3ImageUrl: state.awsupload
   }
 }
 
@@ -136,7 +134,7 @@ const mapDispatch = dispatch => {
           lastName,
           imageUrl,
           age,
-          description,
+          description
         })
       )
     },
@@ -145,7 +143,7 @@ const mapDispatch = dispatch => {
       dispatch(fetchTags())
       dispatch(fetchActivity())
       dispatch(me())
-    },
+    }
   }
 }
 

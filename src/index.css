@@ -45,6 +45,7 @@ h2 {
 }
 .my-facebook-button-class {
   margin-top: 10px;
+  font-size: 12.5px !important;
 }
 .block {
   display: block !important;
@@ -54,8 +55,8 @@ h2 {
 }
 
 .selectWidth {
-  width: 40%;
-  margin-left: 30%;
+  width: 60%;
+  margin-left: 20%;
 }
 
 #talkjs-container {
@@ -73,7 +74,7 @@ h2 {
 }
 
 #userCard {
-  display: flex;
+  /* display: flex; */
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
@@ -83,6 +84,7 @@ h2 {
   transition: all 0.4s ease;
 }
 #userCard .userPic {
+  /* margin-left: 6%; */
   margin: auto;
   border-radius: 30px;
   object-fit: cover;
@@ -107,11 +109,13 @@ h2 {
 }
 .row {
   margin: 15px !important;
+  margin-left: 40px !important;
 }
 .goBtn {
   background-color: #782fff !important;
   color: white;
   margin-left: 20px;
+  font-size: 12.5px !important;
 }
 
 .flex {
@@ -784,6 +788,24 @@ input[type='checkbox']:checked {
   padding: 2em;
   width: 100%;
 }
+.h2font {
+  font-size: 1.5rem;
+  margin-top: 25px;
+  font-weight: bold;
+}
+.h4font {
+  font-size: 1rem;
+  margin: 15px;
+}
+.imgsize {
+  width: 80%;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  margin-left: 25px;
+}
+.btnfontsize {
+  font-size: 12.5px !important;
+}
 .userProfile h4 {
   text-align: left;
   font-family: 'Montserrat', sans-serif;
@@ -935,16 +957,6 @@ h2 {
   font-weight: 500;
 }
 
-/* .master-root {
-  margin: 20px auto;
-  position: relative;
-  min-height: 300px;
-  max-height: 100px;
-  width: 300px;
-  overflow: hidden;
-  border: 1px solid #e5e5e5;
-} */
-
 .animate {
   transition: transform 0.3s;
   box-shadow: none;
@@ -1062,15 +1074,21 @@ h2 {
     padding: 10px 15px;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 12.5px;
     font-weight: 400;
     transition: all 0.5s ease;
+  }
+  #userCard .userPic {
+    /* margin-left: 6%; */
   }
 }
 /* For Medium size devices */
 @media screen and (min-width: 800px) {
   .geoLoc {
     width: auto;
+  }
+  #userCard .userPic {
+    /* margin-left: 20%; */
   }
 }
 /* For Big Devices */
@@ -1146,8 +1164,8 @@ h2 {
   }
   .collapsed .userPic,
   .expanded .userPic {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
   }
   #singleMatchContainer {
     margin: auto;
@@ -1162,11 +1180,17 @@ h2 {
     margin: 25px 10px 25px 10px;
     text-align: left;
   }
+  #userCard .userPic {
+    /* margin-left: 30%; */
+  }
 }
 @media (max-width: 767.98px) {
   .navbar-expand-md > .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
+  }
+  #userCard .userPic {
+    /* margin-left: 25%; */
   }
 }
 

@@ -9,7 +9,7 @@ import FacebookLogin from 'react-facebook-login'
  * COMPONENT
  */
 const AuthForm = props => {
-  const { handleSubmit, facebookLogin, error} = props
+  const { handleSubmit, facebookLogin, error } = props
   let type
   const responseFacebook = response => {
     facebookLogin(response)
@@ -56,6 +56,7 @@ const AuthForm = props => {
               <div className="group">
                 {error ? 'Please enter valid email and password' : null}
                 <button
+                  className="btnfontsize"
                   type="submit"
                   onClick={() => {
                     type = 'login'
@@ -90,11 +91,12 @@ const AuthForm = props => {
                 <input name="password" type="password" />
               </div>
               <div className="group">
-                {error ? <div>That email already exists, please login.</div> : null}
+                {error ? (
+                  <div>That email already exists, please login.</div>
+                ) : null}
                 <button
                   type="submit"
-                  onClick={
-                    () => {
+                  onClick={() => {
                     type = 'signup'
                   }}
                 >
