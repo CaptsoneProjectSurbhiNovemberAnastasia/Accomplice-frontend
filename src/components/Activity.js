@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setActivity, setActivityTags } from '../store'
+import { setActivity, setActivityTags, fetchActivity } from '../store'
 import TagSelect from './TagSelect'
 
 class Activity extends Component {
   state = { activity: '' }
 
   componentDidMount() {
-    if (this.props.activity) this.setState({ activity: this.props.activity.name })
+    this.props.loadActivity()
+    if (this.props.activity)
+      this.setState({ activity: this.props.activity.name })
   }
 
   handleChange = evt => {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
     })
   }
 
@@ -58,12 +60,9 @@ class Activity extends Component {
 }
 const mapState = state => ({ activity: state.activity })
 const mapDispatch = dispatch => ({
-  chooseActivity: activity => {
-    dispatch(setActivity(activity))
-  },
-  chooseActivityTags: tags => {
-    dispatch(setActivityTags(tags))
-  }
+  loadActivity: () => dispatch(fetchActivity()),
+  chooseActivity: activity => dispatch(setActivity(activity)),
+  chooseActivityTags: tags => dispatch(setActivityTags(tags)),
 })
 
 export default connect(

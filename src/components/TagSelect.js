@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Select from 'react-select'
+import { fetchTags } from '../store'
 
 class TagSelect extends Component {
   state = {
-    selectedOptions: []
+    selectedOptions: [],
   }
 
   componentDidMount() {
     this.setState({
       selectedOptions: this.props.tags
         .filter(tag => (this.props.activity ? tag.activity : tag.selected))
-        .map(tag => this.mapTagToSelectElement(tag))
+        .map(tag => this.mapTagToSelectElement(tag)),
     })
   }
 
@@ -24,7 +25,7 @@ class TagSelect extends Component {
     value: tag.name.toLowerCase(),
     label: tag.name,
     id: tag.id,
-    key: tag.id
+    key: tag.id,
   })
 
   render() {
@@ -51,8 +52,13 @@ class TagSelect extends Component {
     )
   }
 }
-
-const mapState = state => ({
-  tags: state.tags
+const mapDispatch = dispatch => ({
+  loadTags: () => dispatch(fetchTags()),
 })
-export default connect(mapState)(TagSelect)
+const mapState = state => ({
+  tags: state.tags,
+})
+export default connect(
+  mapState,
+  mapDispatch
+)(TagSelect)

@@ -6,7 +6,7 @@ import SuggestedMatches from './components/suggestedMatches'
 import InputQuestion from './components/inputQuestion'
 import AllMatches from './components/AllMatches'
 import Chat from './components/Chat'
-import { me, fetchMatches, fetchTags, fetchActivity } from './store'
+import { me } from './store'
 import UserProfile from './components/UserProfile'
 import Quiz from './components/Quiz'
 import TagSelect from './components/TagSelect'
@@ -14,7 +14,7 @@ import Options from './components/Options'
 
 class Routes extends Component {
   componentDidMount() {
-    this.props.loadInitialData(this.props.user.id)
+    this.props.loadInitialData()
   }
 
   render() {
@@ -49,11 +49,8 @@ class Routes extends Component {
 
 const mapDispatch = dispatch => {
   return {
-    loadInitialData(id) {
+    loadInitialData() {
       dispatch(me())
-      dispatch(fetchMatches(id))
-      dispatch(fetchTags())
-      dispatch(fetchActivity())
     }
   }
 }
