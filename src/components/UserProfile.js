@@ -14,6 +14,7 @@ class UserProfile extends Component {
       lastName: this.props.user.lastName || '',
       age: this.props.user.age || 0,
       description: this.props.user.description || '',
+      imageUrl: this.props.user.imageUrl || ''
     })
   }
 
@@ -47,16 +48,16 @@ class UserProfile extends Component {
     evt.preventDefault()
     const id = user.id
 
-    const { firstName, lastName, age, description } = this.state
-    let imageUrl = ''
+    const { imageUrl, firstName, lastName, age, description } = this.state
+    let imageUrlToUse = imageUrl
     if (this.state.image) {
       const formData = new FormData()
       formData.append('file', this.state.image[0])
       await this.props.uploadS3Image(formData)
-      imageUrl = this.props.s3ImageUrl
+      imageUrlToUse = this.props.s3ImageUrl
     }
 
-    this.props.updateUser(id, firstName, lastName, imageUrl, age, description)
+    this.props.updateUser(id, firstName, lastName, imageUrlToUse, age, description)
   }
 
   render() {
@@ -83,11 +84,7 @@ class UserProfile extends Component {
         <div className="form nopadding">
           <div className="form">
             <div className="imgsize ">
-              {user.imageUrl === '#' ? (
-                <img src="/no_profile_pic.png" alt="" />
-              ) : (
-                <img src={user.imageUrl} alt="" />
-              )}
+              <img src={user.imageUrl} />
             </div>
             <div>
               <button
