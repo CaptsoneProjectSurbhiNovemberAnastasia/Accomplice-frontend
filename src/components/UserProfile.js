@@ -5,21 +5,31 @@ import { updateUser } from '../store/user'
 import { NavLink } from 'react-router-dom'
 import UserProfileForm from './UserProfileForm'
 
+
 class UserProfile extends Component {
   state = { editing: false, options: false }
   render() {
     const { user } = this.props
     const { editing } = this.state
-
+    console.log('STATE', this.props)
     if (user && !user.id) {
       return null
     }
     return (
-      <div className="form nopadding">
+      <div>
+        {user.id && !user.firstName ?
+        <div>
+          <h2>Welcome to Accomplice!</h2>
+          <h4>Please edit your profile below before taking our personality quiz and swiping for matches.</h4>
+        </div> :
+        <div>
+          <h2>Hi {user.firstName}!</h2>
+        </div>
+        }
+        <div className="form nopadding">
         <div className="form">
           <div className=" ">
-            <h2>Hi {user.firstName}!</h2>
-            <img src={user.imageUrl} alt="" />
+          {user.imageUrl === '#' ? <img src="/no_profile_pic.png" alt="" /> : <img src={user.imageUrl} alt="" />}
           </div>
           <div>
             <button
@@ -39,8 +49,12 @@ class UserProfile extends Component {
             )}
             <NavLink to="/options">
               <button type="button" className="button">
-                Update Activity and Tags
+                Change Activity and Tags
               </button>
+            </NavLink>
+            {}
+            <NavLink to="/quiz" className="pt-2">
+              <button type="button" className="button">Personality Quiz</button>
             </NavLink>
             <button
               className="btnWidth"
@@ -50,6 +64,7 @@ class UserProfile extends Component {
               Logout
             </button>
           </div>
+        </div>
         </div>
       </div>
     )
