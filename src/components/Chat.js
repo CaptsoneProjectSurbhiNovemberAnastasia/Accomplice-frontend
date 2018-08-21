@@ -21,15 +21,16 @@ class Chat extends Component {
         name: loggedInUser.firstName + ' ' + loggedInUser.lastName,
         photoUrl: loggedInUser.imageUrl,
       })
+      console.log(process.env)
       this.talkSession = new Talk.Session({
-        appId: 'tcvhLpn3',
+        appId: process.env.REACT_APP_TALKJS_APP_ID,
         me: me,
       })
 
       const other = new Talk.User({
         id: chatPartner.id,
         name: chatPartner.firstName + ' ' + chatPartner.lastName,
-        photoUrl: chatPartner.imageUrl,
+        photoUrl: chatPartner.imageUrl || null,
       })
 
       const conversationId = Talk.oneOnOneId(me, other)
