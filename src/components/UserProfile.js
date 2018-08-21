@@ -41,7 +41,6 @@ class UserProfile extends Component {
   render() {
     const { user } = this.props
     const { editing } = this.state
-    console.log('STATE', this.props)
     if (user && !user.id) {
       return null
     }

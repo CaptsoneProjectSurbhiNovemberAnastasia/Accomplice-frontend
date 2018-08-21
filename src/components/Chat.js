@@ -18,7 +18,7 @@ class Chat extends Component {
       const chatPartner = matches.find(
         user => user.id === +this.props.match.params.id
       )
-      console.log(loggedInUser, chatPartner)
+
       const me = new Talk.User({
         id: loggedInUser.id,
         name: loggedInUser.firstName + ' ' + loggedInUser.lastName,
@@ -55,7 +55,7 @@ class Chat extends Component {
     return (
       <div>
         <span>
-          <div ref={c => (this.container = c)}>Loading...</div>
+          <div id="talkjs-container" ref={c => (this.container = c)}>Loading...</div>
         </span>
       </div>
     )

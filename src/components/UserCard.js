@@ -8,7 +8,6 @@ class UserCard extends Component {
     this.props.matchWithUser(this.props.user.id)
   }
   render() {
-    console.log('Inside userCard')
     const { user } = this.props
     let activityTags = []
     if (user.activityId) {

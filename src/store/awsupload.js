@@ -8,9 +8,6 @@ const getS3ImageUrl = s3ImageUrl => ({
 })
 
 export const uploadS3Image = formData => async dispatch => {
-  //console.log('Store uploadS3Image**** ')
-
-  console.log('form data is ' + JSON.stringify(formData))
 
   await axios
     .post(`${process.env.REACT_APP_API_URL}api/awsupload/s3-upload`, formData, {
@@ -19,15 +16,12 @@ export const uploadS3Image = formData => async dispatch => {
       }
     })
     .then(response => {
-      console.log('response is', response)
       let imageUrl = response.data.Location
       dispatch(getS3ImageUrl(imageUrl))
     })
     .catch(error => {
-      console.log('error  is', error)
       console.error(error)
     })
-  console.log('After upload image request')
 }
 
 const s3ImageUrl = (state = [], action) => {
