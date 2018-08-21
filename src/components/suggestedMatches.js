@@ -68,6 +68,9 @@ class SuggestedMatches extends Component {
       return <div>Finding people...</div>
     }
 
+    if (filteredSuggestedMatches.length === 0)
+      filteredSuggestedMatches = suggestedMatches
+
     return (
       <div className="container">
         <div />
