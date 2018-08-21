@@ -9,27 +9,48 @@ import { uploadS3Image } from '../store/awsupload'
 class UserProfile extends Component {
   componentDidMount() {
     this.props.loadUserData(this.props.user.id)
+    this.setState({
+      firstName: this.props.user.firstName || '',
+      lastName: this.props.user.lastName || '',
+      age: this.props.user.age || 0,
+      description: this.props.user.description || '',
+    })
   }
+
   constructor(props) {
     super(props)
-    this.handleFileUpload = this.handleFileUpload.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.state = { editing: false, options: false, file1: null }
+    this.state = {
+      firstName: '',
+      lastName: '',
+      age: 0,
+      description: '',
+      image: '',
+      editing: false,
+      options: false,
+    }
   }
-  async handleFileUpload(evt) {
+
+  handleChange = evt => {
     evt.preventDefault()
-    await this.setState({ file1: evt.target.files })
+
+    if (evt.target.files) {
+      this.setState({ image: evt.target.files })
+    } else {
+      this.setState({
+        [evt.target.name]: evt.target.value,
+      })
+    }
   }
-  async handleSubmit(evt, user) {
+
+  handleSubmit = async (evt, user) => {
     evt.preventDefault()
     const id = user.id
-    const firstName = evt.target.firstName.value
-    const lastName = evt.target.lastName.value
-    const age = evt.target.age.value
-    const description = evt.target.description.value
+
+    const { firstName, lastName, age, description } = this.state
 
     const formData = new FormData()
-    formData.append('file', this.state.file1[0])
+    formData.append('file', this.state.image[0])
     await this.props.uploadS3Image(formData)
     let imageUrl = this.props.s3ImageUrl
 
@@ -77,9 +98,10 @@ class UserProfile extends Component {
               {editing ? (
                 <UserProfileForm
                   user={user}
+                  handleChange={this.handleChange}
                   handleSubmit={this.handleSubmit}
-                  file={this.state.file1}
-                  handleFileUpload={this.handleFileUpload}
+                  state={this.state}
+                  // handleFileUpload={this.handleFileUpload}
                 />
               ) : (
                 <div />
@@ -113,7 +135,7 @@ class UserProfile extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    s3ImageUrl: state.awsupload
+    s3ImageUrl: state.awsupload,
   }
 }
 
@@ -123,9 +145,11 @@ const mapDispatch = dispatch => {
       evt.preventDefault()
       dispatch(logout())
     },
+
     async uploadS3Image(file) {
       await dispatch(uploadS3Image(file))
     },
+
     updateUser(id, firstName, lastName, imageUrl, age, description) {
       dispatch(
         updateUser({
@@ -134,16 +158,17 @@ const mapDispatch = dispatch => {
           lastName,
           imageUrl,
           age,
-          description
+          description,
         })
       )
     },
+
     loadUserData: id => {
       dispatch(fetchMatches(id))
       dispatch(fetchTags())
       dispatch(fetchActivity())
       dispatch(me())
-    }
+    },
   }
 }
 
