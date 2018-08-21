@@ -56,7 +56,6 @@ const UserProfileForm = props => {
             <input
               label="upload file"
               name="uploadFile"
-              value={state.image}
               onChange={handleChange}
               type="file"
             />
