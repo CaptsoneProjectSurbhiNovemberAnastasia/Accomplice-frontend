@@ -48,11 +48,13 @@ class UserProfile extends Component {
     const id = user.id
 
     const { firstName, lastName, age, description } = this.state
-
-    const formData = new FormData()
-    formData.append('file', this.state.image[0])
-    await this.props.uploadS3Image(formData)
-    let imageUrl = this.props.s3ImageUrl
+    let imageUrl = ''
+    if (this.state.image) {
+      const formData = new FormData()
+      formData.append('file', this.state.image[0])
+      await this.props.uploadS3Image(formData)
+      imageUrl = this.props.s3ImageUrl
+    }
 
     this.props.updateUser(id, firstName, lastName, imageUrl, age, description)
   }
