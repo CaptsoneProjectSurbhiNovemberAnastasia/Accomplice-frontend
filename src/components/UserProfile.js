@@ -18,6 +18,7 @@ class UserProfile extends Component {
   }
   async handleFileUpload(evt) {
     evt.preventDefault()
+    console.log(evt.target.files)
     await this.setState({ file1: evt.target.files })
   }
   async handleSubmit(evt, user) {
@@ -113,7 +114,7 @@ class UserProfile extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    s3ImageUrl: state.awsupload
+    s3ImageUrl: state.awsupload,
   }
 }
 
@@ -134,7 +135,7 @@ const mapDispatch = dispatch => {
           lastName,
           imageUrl,
           age,
-          description
+          description,
         })
       )
     },
@@ -143,7 +144,7 @@ const mapDispatch = dispatch => {
       dispatch(fetchTags())
       dispatch(fetchActivity())
       dispatch(me())
-    }
+    },
   }
 }
 
