@@ -10,6 +10,7 @@ const RadioForm = props => {
       <form>
         {values.map(value => (
           <input
+            className="radio-buttons"
             type="radio"
             key={value}
             value={value}

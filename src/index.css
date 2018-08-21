@@ -198,6 +198,9 @@ h2 {
   border-radius: 100%;
 }
 
+.radio-buttons {
+  margin: 20px
+}
 .icon {
   height: 80px;
   width: 80px;

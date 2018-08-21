@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserProfileForm = props => {
-  const { handleSubmit, user, handleFileUpload } = props
+  const { handleSubmit, user, state, handleChange } = props
 
   return (
     <form
@@ -16,42 +16,49 @@ const UserProfileForm = props => {
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
+              value={state.firstName}
               name="firstName"
+              onChange={handleChange}
               className="form-control"
-              defaultValue={user.firstName}
+              // defaultValue={user.firstName}
             />
           </div>
           <div className="control">
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
+              value={state.lastName}
+              onChange={handleChange}
               name="lastName"
               className="form-control"
-              defaultValue={user.lastName}
+              // defaultValue={user.lastName}
             />
           </div>
           <div className="control">
             <label htmlFor="age">Age</label>
             <input
               type="text"
+              value={state.age}
               name="age"
+              onChange={handleChange}
               className="form-control"
-              defaultValue={user.age}
+              // defaultValue={user.age}
             />
           </div>
           <div className="control">
-            <label htmlFor="imageUrl">Profile Picture URL</label>
-            <input
+            <label htmlFor="image">Profile Picture</label>
+            {/* <input
               type="text"
               name="imageUrl"
               className="form-control"
               defaultValue={user.imageUrl}
-            />
+            /> */}
             <input
               label="upload file"
               name="uploadFile"
+              value={state.image}
+              onChange={handleChange}
               type="file"
-              onChange={handleFileUpload}
             />
           </div>
           <div className="control">
@@ -59,9 +66,11 @@ const UserProfileForm = props => {
             <textarea
               type="text"
               rows="3"
+              value={state.description}
+              onChange={handleChange}
               name="description"
               className="form-control"
-              defaultValue={user.description}
+              // defaultValue={user.description}
             />
           </div>
           <div className="form-button row btnInline ">
