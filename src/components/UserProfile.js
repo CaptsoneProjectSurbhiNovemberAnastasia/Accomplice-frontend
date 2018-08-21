@@ -21,8 +21,6 @@ class UserProfile extends Component {
     evt.preventDefault()
     const id = user.id
 
-    // const file = evt.target.files
-    console.log('files is****** ', this.state.file1[0])
     const firstName = evt.target.firstName.value
     const lastName = evt.target.lastName.value
     const age = evt.target.age.value
@@ -33,7 +31,6 @@ class UserProfile extends Component {
     formData.append('file', this.state.file1[0])
     await this.props.uploadS3Image(formData)
     let imageUrl = this.props.s3ImageUrl
-    console.log('Image url is' + imageUrl)
 
     this.props.updateUser(id, firstName, lastName, imageUrl, age, description)
   }
@@ -103,11 +100,9 @@ const mapDispatch = dispatch => {
       dispatch(logout())
     },
     async uploadS3Image(file) {
-      console.log('Inside upload S3Image', file)
       await dispatch(uploadS3Image(file))
     },
     updateUser(id, firstName, lastName, imageUrl, age, description) {
-      console.log('Inside Updating user ')
       dispatch(
         updateUser({
           id,
