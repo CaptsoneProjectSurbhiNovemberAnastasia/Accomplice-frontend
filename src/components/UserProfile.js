@@ -23,11 +23,9 @@ class UserProfile extends Component {
   async handleSubmit(evt, user) {
     evt.preventDefault()
     const id = user.id
-
     const firstName = evt.target.firstName.value
     const lastName = evt.target.lastName.value
     const age = evt.target.age.value
-
     const description = evt.target.description.value
 
     const formData = new FormData()
