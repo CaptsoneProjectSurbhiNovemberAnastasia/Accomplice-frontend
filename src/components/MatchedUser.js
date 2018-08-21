@@ -6,9 +6,10 @@ const MatchedUser = props => {
   return (
     <li key={user.id}>
       <div>{user.firstName + ' ' + user.lastName}</div>
-      <button type="button">
-        <NavLink to={`/chat/${user.id}`}>Chat!</NavLink>
-      </button>
+
+      <NavLink to={`/chat/${user.id}`}>
+        <button type="button">Chat!</button>
+      </NavLink>
     </li>
   )
 }

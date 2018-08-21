@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import * as Talk from 'talkjs'
-
+import { fetchMatches } from '../store'
 import { connect } from 'react-redux'
 
 class Chat extends Component {
@@ -9,9 +9,12 @@ class Chat extends Component {
     this.talkSession = undefined
   }
   async componentDidMount() {
+    this.props.loadMatches(this.props.loggedInUser.id)
+
     try {
       await Talk.ready
       const { loggedInUser, matches } = this.props
+      console.log(matches)
       const chatPartner = matches.find(
         user => user.id === +this.props.match.params.id
       )
@@ -21,7 +24,6 @@ class Chat extends Component {
         name: loggedInUser.firstName + ' ' + loggedInUser.lastName,
         photoUrl: loggedInUser.imageUrl,
       })
-      console.log(process.env)
       this.talkSession = new Talk.Session({
         appId: process.env.REACT_APP_TALKJS_APP_ID,
         me: me,
@@ -61,11 +63,15 @@ class Chat extends Component {
 }
 
 const mapState = state => ({
-  loggedInUser: state.user,
   matches: state.matches,
+  loggedInUser: state.user,
+})
+
+const mapDispatch = dispatch => ({
+  loadMatches: id => dispatch(fetchMatches(id)),
 })
 
 export default connect(
   mapState,
-  null
+  mapDispatch
 )(Chat)
