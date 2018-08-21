@@ -55,7 +55,7 @@ class SuggestedMatches extends Component {
       loadMatches,
       matchWithUser,
     } = this.props
-
+    let filteredSuggestedMatches
     if (!Array.isArray(suggestedMatches) && !suggestedMatches) {
       return <div>You're not allowed to view this page.</div>
     } else if (
@@ -64,10 +64,11 @@ class SuggestedMatches extends Component {
     ) {
       return <div>Finding people...</div>
     } else {
-      const filteredSuggestedMatches = this.filterSuggestedMatches(
+      filteredSuggestedMatches = this.filterSuggestedMatches(
         suggestedMatches,
         currentUser
       )
+
       return (
         <div className="container">
           <div />
