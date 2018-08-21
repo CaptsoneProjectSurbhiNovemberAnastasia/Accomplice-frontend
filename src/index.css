@@ -205,7 +205,7 @@ h2 {
 }
 
 .radio-buttons {
-  margin: 20px
+  margin: 20px;
 }
 .icon {
   height: 80px;
@@ -237,7 +237,9 @@ h2 {
   height: 100vh;
   max-width: 900px;
 }
-
+.scale {
+  display: inline-flex;
+}
 .typeIcon {
   border-radius: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -1090,17 +1092,11 @@ h2 {
     font-weight: 400;
     transition: all 0.5s ease;
   }
-  #userCard .userPic {
-    /* margin-left: 6%; */
-  }
 }
 /* For Medium size devices */
 @media screen and (min-width: 800px) {
   .geoLoc {
     width: auto;
-  }
-  #userCard .userPic {
-    /* margin-left: 20%; */
   }
 }
 /* For Big Devices */
@@ -1196,17 +1192,11 @@ h2 {
     margin: 25px 10px 25px 10px;
     text-align: left;
   }
-  #userCard .userPic {
-    /* margin-left: 30%; */
-  }
 }
 @media (max-width: 767.98px) {
   .navbar-expand-md > .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
-  }
-  #userCard .userPic {
-    /* margin-left: 25%; */
   }
 }
 

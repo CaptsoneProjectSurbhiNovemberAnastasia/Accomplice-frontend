@@ -18,15 +18,21 @@ const RadioForm = props => {
             checked={+answer === value}
           />
         ))}
-        <div className="scale">Disagree Neutral Agree</div>
-        <button
-          type="button"
-          onClick={function(evt) {
-            handleClick(evt, question.id)
-          }}
-        >
-          Next
-        </button>
+        <div className="scale">
+          <p className="mr-4">Disagree</p>
+          <p className="mr-4">Neutral</p>
+          <p className="ml-2"> Agree</p>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={function(evt) {
+              handleClick(evt, question.id)
+            }}
+          >
+            Next
+          </button>
+        </div>
       </form>
     </div>
   )
