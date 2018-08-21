@@ -8,17 +8,19 @@ const RadioForm = props => {
       <div>{question.question}</div>
       <br />
       <form>
-        {values.map(value => (
-          <input
-            className="radio-buttons"
-            type="radio"
-            key={value}
-            value={value}
-            onChange={handleChange}
-            checked={+answer === value}
-          />
-        ))}
-        <div className="scale">
+        <div>
+          {values.map(value => (
+            <input
+              className="radio-buttons"
+              type="radio"
+              key={value}
+              value={value}
+              onChange={handleChange}
+              checked={+answer === value}
+            />
+          ))}
+        </div>
+        <div className="scale ">
           <p className="mr-4">Disagree</p>
           <p className="mr-4">Neutral</p>
           <p className="ml-2"> Agree</p>
