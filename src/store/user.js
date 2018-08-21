@@ -12,10 +12,10 @@ const defaultUser = {}
 // ACTION CREATORS
 const getUser = user => ({
     type: GET_USER,
-    user
+    user,
   }),
   logOutUser = () => ({
-    type: LOGOUT_USER
+    type: LOGOUT_USER,
   })
 
 // THUNK CREATORS
@@ -33,7 +33,7 @@ export const me = () => async dispatch => {
       id,
       imageUrl,
       latitude,
-      longitude
+      longitude,
     } = data
     const user = {
       age,
@@ -45,7 +45,7 @@ export const me = () => async dispatch => {
       id,
       imageUrl,
       latitude,
-      longitude
+      longitude,
     }
     dispatch(getUser(user || defaultUser))
   } catch (e) {
@@ -58,18 +58,14 @@ export const auth = (email, password, method) => async dispatch => {
   try {
     res = await axios.post(`${process.env.REACT_APP_API_URL}auth/${method}`, {
       email,
-      password
+      password,
     })
   } catch (authError) {
     return dispatch(getUser({ error: authError }))
   }
   try {
     dispatch(getUser(res.data))
-    if (res.data.firstName === null) {
-      history.push('/profile')
-    } else {
-      history.push('/question')
-    }
+    history.push('/question')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -85,7 +81,7 @@ export const facebookauth = (
     res = await axios.post(`${process.env.REACT_APP_API_URL}auth/${method}`, {
       email,
       firstName,
-      imageUrl
+      imageUrl,
     })
     console.log('Response from facebook is ', res)
   } catch (authError) {
