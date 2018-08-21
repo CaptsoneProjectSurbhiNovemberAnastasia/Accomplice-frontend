@@ -11,7 +11,7 @@ class UserProfile extends Component {
   render() {
     const { user } = this.props
     const { editing } = this.state
-
+    console.log('STATE', this.props)
     if (user && !user.id) {
       return null
     }
@@ -20,7 +20,7 @@ class UserProfile extends Component {
         {user.id && !user.firstName ?
         <div>
           <h2>Welcome to Accomplice!</h2>
-          <h4>Please edit your profile below before taking our personality quiz and swipping for matches.</h4>
+          <h4>Please edit your profile below before taking our personality quiz and swiping for matches.</h4>
         </div> :
         <div>
           <h2>Hi {user.firstName}!</h2>
@@ -30,7 +30,6 @@ class UserProfile extends Component {
         <div className="form">
           <div className=" ">
           {user.imageUrl === '#' ? <img src="/no_profile_pic.png" alt="" /> : <img src={user.imageUrl} alt="" />}
-            <img src={user.imageUrl} alt="" />
           </div>
           <div>
             <button
@@ -50,11 +49,12 @@ class UserProfile extends Component {
             )}
             <NavLink to="/options">
               <button type="button" className="button">
-                Update Activity and Tags
+                Change Activity and Tags
               </button>
             </NavLink>
+            {}
             <NavLink to="/quiz" className="pt-2">
-              <button type="button" className="button">Retake Personality Quiz</button>
+              <button type="button" className="button">Personality Quiz</button>
             </NavLink>
             <button
               className="btnWidth"

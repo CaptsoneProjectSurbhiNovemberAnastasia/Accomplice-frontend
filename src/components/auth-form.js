@@ -9,8 +9,7 @@ import FacebookLogin from 'react-facebook-login'
  * COMPONENT
  */
 const AuthForm = props => {
-  const { handleSubmit, facebookLogin } = props
-  const { error } = props
+  const { handleSubmit, facebookLogin, error} = props
   let type
   const responseFacebook = response => {
     console.log('Inside responseFacebook', response)
@@ -19,6 +18,7 @@ const AuthForm = props => {
   const componentClicked = response => {
     console.log('Inside componentClicked', response)
   }
+
   return (
     <div className="splash">
       <div className="form animated flipInX login-html">
@@ -91,9 +91,11 @@ const AuthForm = props => {
                 <input name="password" type="password" />
               </div>
               <div className="group">
+                {error ? <div>That email already exists, please login.</div> : null}
                 <button
                   type="submit"
-                  onClick={() => {
+                  onClick={
+                    () => {
                     type = 'signup'
                   }}
                 >
