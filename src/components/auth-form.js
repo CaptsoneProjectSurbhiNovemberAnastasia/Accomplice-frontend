@@ -12,7 +12,6 @@ const AuthForm = props => {
   const { handleSubmit, facebookLogin, error } = props
   let type
   const responseFacebook = response => {
-    console.log('Inside responseFacebook', response)
     facebookLogin(response)
   }
   const componentClicked = response => {
@@ -124,7 +123,6 @@ const mapDispatch = dispatch => ({
     dispatch(auth(email, password, type))
   },
   facebookLogin: response => {
-    console.log('dispatching gfacebooklogin')
     const type = 'facebookLogin'
     const email = response.email
     const name = response.name

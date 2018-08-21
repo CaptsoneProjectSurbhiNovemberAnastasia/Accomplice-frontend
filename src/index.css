@@ -58,6 +58,13 @@ h2 {
   width: 60%;
   margin-left: 20%;
 }
+
+#talkjs-container {
+  width: 90%;
+  margin: 30px;
+  height: 500px
+}
+
 #singleMatchContainer {
   background-size: cover;
   position: relative;

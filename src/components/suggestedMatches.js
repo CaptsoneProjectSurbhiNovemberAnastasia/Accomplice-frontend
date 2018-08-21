@@ -14,6 +14,7 @@ const CustomAlertRight = () => (
     <img alt="accept user icon" src="../favorite-icon.png" className="icon" />
   </span>
 )
+
 class SuggestedMatches extends Component {
   componentDidMount() {
     this.props.loadMatches(this.props.currentUser.id)
@@ -112,7 +113,7 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = (dispatch, ownProps) => ({
+const mapDispatch = (dispatch) => ({
   loadMatches: async id => {
     await dispatch(fetchSuggestedMatches(id))
   },
