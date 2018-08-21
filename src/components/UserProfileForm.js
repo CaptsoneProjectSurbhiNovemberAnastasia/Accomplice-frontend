@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserProfileForm = props => {
-  const { handleSubmit, user } = props
+  const { handleSubmit, user, handleFileUpload } = props
 
   return (
     <form
@@ -46,6 +46,12 @@ const UserProfileForm = props => {
               name="imageUrl"
               className="form-control"
               defaultValue={user.imageUrl}
+            />
+            <input
+              label="upload file"
+              name="uploadFile"
+              type="file"
+              onChange={handleFileUpload}
             />
           </div>
           <div className="control">
