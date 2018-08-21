@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom'
 import UserProfileForm from './UserProfileForm'
 import { uploadS3Image } from '../store/awsupload'
 
-
 class UserProfile extends Component {
   constructor(props) {
     super(props)
@@ -45,56 +44,66 @@ class UserProfile extends Component {
     }
     return (
       <div>
-        {user.id && !user.firstName ?
-        <div>
-          <h2>Welcome to Accomplice!</h2>
-          <h4>Please edit your profile below before taking our personality quiz and swiping for matches.</h4>
-        </div> :
-        <div>
-          <h2>Hi {user.firstName}!</h2>
-        </div>
-        }
-        <div className="form nopadding">
-        <div className="form">
-          <div className=" ">
-          {user.imageUrl === '#' ? <img src="/no_profile_pic.png" alt="" /> : <img src={user.imageUrl} alt="" />}
-          </div>
+        {user.id && !user.firstName ? (
           <div>
-            <button
-              className="mb-2 mt-2"
-              type="button"
-              onClick={() => this.setState({ editing: !editing })}
-            >
-              {editing ? 'Done' : 'Edit Profile'}{' '}
-            </button>
-            {editing ? (
-              <UserProfileForm
-                user={user}
-                handleSubmit={this.handleSubmit}
-                file={this.state.file1}
-                handleFileUpload={this.handleFileUpload}
-              />
-            ) : (
-              <div className="mb-2" />
-            )}
-            <NavLink to="/options">
-              <button type="button" className="button">
-                Change Activity and Tags
-              </button>
-            </NavLink>
-            {}
-            <NavLink to="/quiz" className="pt-2">
-              <button type="button" className="button">Personality Quiz</button>
-            </NavLink>
-            <button
-              className="btnWidth"
-              type="button"
-              onClick={this.props.handleClick}
-            >
-              Logout
-            </button>
+            <h2 className="h2font">Welcome to Accomplice!</h2>
+            <h4 className="h4font">
+              Please edit your profile below before taking our personality quiz
+              and swiping for matches.
+            </h4>
           </div>
-        </div>
+        ) : (
+          <div>
+            <h2>Hi {user.firstName}!</h2>
+          </div>
+        )}
+        <div className="form nopadding">
+          <div className="form">
+            <div className="imgsize ">
+              {user.imageUrl === '#' ? (
+                <img src="/no_profile_pic.png" alt="" />
+              ) : (
+                <img src={user.imageUrl} alt="" />
+              )}
+            </div>
+            <div>
+              <button
+                className="mb-1 mt-1 btnfontsize"
+                type="button"
+                onClick={() => this.setState({ editing: !editing })}
+              >
+                {editing ? 'Done' : 'Edit Profile'}{' '}
+              </button>
+              {editing ? (
+                <UserProfileForm
+                  user={user}
+                  handleSubmit={this.handleSubmit}
+                  file={this.state.file1}
+                  handleFileUpload={this.handleFileUpload}
+                />
+              ) : (
+                <div />
+              )}
+              <NavLink to="/options">
+                <button type="button" className="button mb-1 mt-1 btnfontsize">
+                  Change Activity and Tags
+                </button>
+              </NavLink>
+              {}
+              <NavLink to="/quiz" className="">
+                <button type="button" className="button mb-1 mt-1 btnfontsize">
+                  Personality Quiz
+                </button>
+              </NavLink>
+              <button
+                className="button mb-1 mt-1 btnfontsize"
+                type="button"
+                onClick={this.props.handleClick}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     )
