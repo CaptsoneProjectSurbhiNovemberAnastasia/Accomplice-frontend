@@ -55,7 +55,10 @@ class SuggestedMatches extends Component {
       loadMatches,
       matchWithUser,
     } = this.props
-    let filteredSuggestedMatches
+    let filteredSuggestedMatches = this.filterSuggestedMatches(
+      suggestedMatches,
+      currentUser
+    )
     if (!Array.isArray(suggestedMatches) && !suggestedMatches) {
       return <div>You're not allowed to view this page.</div>
     } else if (
@@ -63,42 +66,40 @@ class SuggestedMatches extends Component {
       suggestedMatches.length === 0
     ) {
       return <div>Finding people...</div>
-    } else {
-      filteredSuggestedMatches = this.filterSuggestedMatches(
-        suggestedMatches,
-        currentUser
-      )
-
-      return (
-        <div className="container">
-          <div />
-          <Cards
-            alertRight={<CustomAlertRight />}
-            alertLeft={<CustomAlertLeft />}
-            onEnd={() => loadMatches()}
-            className="master-root"
-          >
-            {!filteredSuggestedMatches ? (
-              <div>Nobody yet!</div>
-            ) : (
-              filteredSuggestedMatches.map(user => (
-                <Card
-                  key={user.id}
-                  onSwipeLeft={() => {
-                    onReject(user.id, currentUser.id, match.params.type)
-                  }}
-                  onSwipeRight={() => {
-                    matchWithUser(user.id)
-                  }}
-                >
-                  <UserCard key={user.id} user={user} />
-                </Card>
-              ))
-            )}
-          </Cards>
-        </div>
-      )
     }
+
+    if (filteredSuggestedMatches.length === 0)
+      filteredSuggestedMatches = suggestedMatches
+
+    return (
+      <div className="container">
+        <div />
+        <Cards
+          alertRight={<CustomAlertRight />}
+          alertLeft={<CustomAlertLeft />}
+          onEnd={() => loadMatches()}
+          className="master-root"
+        >
+          {!filteredSuggestedMatches ? (
+            <div>Nobody yet!</div>
+          ) : (
+            filteredSuggestedMatches.map(user => (
+              <Card
+                key={user.id}
+                onSwipeLeft={() => {
+                  onReject(user.id, currentUser.id, match.params.type)
+                }}
+                onSwipeRight={() => {
+                  matchWithUser(user.id)
+                }}
+              >
+                <UserCard key={user.id} user={user} />
+              </Card>
+            ))
+          )}
+        </Cards>
+      </div>
+    )
   }
 }
 

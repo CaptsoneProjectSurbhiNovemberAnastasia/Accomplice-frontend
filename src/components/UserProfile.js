@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { logout } from '../store'
+import { logout, fetchMatches, fetchTags, fetchActivity, me } from '../store'
 import { updateUser } from '../store/user'
 import { NavLink } from 'react-router-dom'
 import UserProfileForm from './UserProfileForm'
 import { uploadS3Image } from '../store/awsupload'
 
 class UserProfile extends Component {
+  componentDidMount() {
+    this.props.loadUserData(this.props.user.id)
+  }
   constructor(props) {
     super(props)
     this.handleFileUpload = this.handleFileUpload.bind(this)
@@ -137,6 +140,12 @@ const mapDispatch = dispatch => {
           description
         })
       )
+    },
+    loadUserData: id => {
+      dispatch(fetchMatches(id))
+      dispatch(fetchTags())
+      dispatch(fetchActivity())
+      dispatch(me())
     }
   }
 }
