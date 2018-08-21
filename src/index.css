@@ -62,7 +62,7 @@ h2 {
 #talkjs-container {
   width: 90%;
   margin: 30px;
-  height: 500px
+  height: 500px;
 }
 
 #singleMatchContainer {
@@ -90,8 +90,11 @@ h2 {
   object-fit: cover;
   display: block;
 }
-#userCard #picContainer {
+/* #userCard #picContainer {
   width: 100vw;
+} */
+.chat {
+  display: inline;
 }
 .bg-color {
   background-color: #782fff !important;
@@ -108,8 +111,11 @@ h2 {
   -webkit-font-smoothing: none !important;
 }
 .row {
-  margin: 15px !important;
-  margin-left: 40px !important;
+  /* margin: 15px !important; */
+  margin-left: 27px !important;
+}
+.marginRight {
+  margin-right: -30px !important;
 }
 .goBtn {
   background-color: #782fff !important;

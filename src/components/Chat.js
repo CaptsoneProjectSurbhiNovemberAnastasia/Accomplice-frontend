@@ -24,6 +24,7 @@ class Chat extends Component {
         name: loggedInUser.firstName + ' ' + loggedInUser.lastName,
         photoUrl: loggedInUser.imageUrl,
       })
+      console.log(process.env)
       this.talkSession = new Talk.Session({
         appId: process.env.REACT_APP_TALKJS_APP_ID,
         me: me,
@@ -55,7 +56,9 @@ class Chat extends Component {
     return (
       <div>
         <span>
-          <div id="talkjs-container" ref={c => (this.container = c)}>Loading...</div>
+          <div id="talkjs-container" ref={c => (this.container = c)}>
+            Loading...
+          </div>
         </span>
       </div>
     )
