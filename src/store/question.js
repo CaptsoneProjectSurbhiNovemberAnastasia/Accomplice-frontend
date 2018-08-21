@@ -4,13 +4,14 @@ export const GET_QUESTIONS = 'GET_QUESTIONS'
 
 const getQuestions = questions => ({
   type: GET_QUESTIONS,
-  questions,
+  questions
 })
 
 export const fetchQuestions = () => async dispatch => {
   try {
     const questions = await axios.get(
-      `${process.env.REACT_APP_API_URL}api/questions`)
+      `${process.env.REACT_APP_API_URL}api/questions`
+    )
     dispatch(getQuestions(questions.data))
   } catch (err) {
     console.log(err)

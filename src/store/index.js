@@ -10,6 +10,7 @@ import matches from './matches'
 import questions from './question'
 import activity from './activity'
 import userTraitValues from './userTraits'
+import awsupload from './awsupload'
 
 const reducer = combineReducers({
   user,
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   tags,
   activity,
   userTraitValues,
+  awsupload
 })
 
 // Use for production
@@ -27,7 +29,7 @@ const middleware = composeWithDevTools(
   applyMiddleware(
     thunkMiddleware,
     createLogger({
-      collapsed: true,
+      collapsed: true
     })
   )
 )
@@ -42,5 +44,6 @@ export * from './question'
 export * from './tags'
 export * from './activity'
 export * from './userTraits'
+export * from './awsupload'
 
 export default store

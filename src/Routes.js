@@ -54,7 +54,7 @@ const mapDispatch = dispatch => {
       dispatch(fetchMatches(id))
       dispatch(fetchTags())
       dispatch(fetchActivity())
-    },
+    }
   }
 }
 

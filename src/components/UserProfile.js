@@ -4,9 +4,40 @@ import { logout } from '../store'
 import { updateUser } from '../store/user'
 import { NavLink } from 'react-router-dom'
 import UserProfileForm from './UserProfileForm'
+import { uploadS3Image } from '../store/awsupload'
 
 class UserProfile extends Component {
-  state = { editing: false, options: false }
+  constructor(props) {
+    super(props)
+    this.handleFileUpload = this.handleFileUpload.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = { editing: false, options: false, file1: null }
+  }
+  async handleFileUpload(evt) {
+    evt.preventDefault()
+    await this.setState({ file1: evt.target.files })
+  }
+  async handleSubmit(evt, user) {
+    evt.preventDefault()
+    const id = user.id
+
+    // const file = evt.target.files
+    console.log('files is****** ', this.state.file1[0])
+    const firstName = evt.target.firstName.value
+    const lastName = evt.target.lastName.value
+    const age = evt.target.age.value
+
+    const description = evt.target.description.value
+
+    const formData = new FormData()
+    formData.append('file', this.state.file1[0])
+    await this.props.uploadS3Image(formData)
+    let imageUrl = this.props.s3ImageUrl
+    console.log('Image url is' + imageUrl)
+
+    this.props.updateUser(id, firstName, lastName, imageUrl, age, description)
+  }
+
   render() {
     const { user } = this.props
     const { editing } = this.state
@@ -32,7 +63,9 @@ class UserProfile extends Component {
             {editing ? (
               <UserProfileForm
                 user={user}
-                handleSubmit={this.props.handleSubmit}
+                handleSubmit={this.handleSubmit}
+                file={this.state.file1}
+                handleFileUpload={this.handleFileUpload}
               />
             ) : (
               <div className="mb-2" />
@@ -58,7 +91,8 @@ class UserProfile extends Component {
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    s3ImageUrl: state.awsupload
   }
 }
 
@@ -68,15 +102,12 @@ const mapDispatch = dispatch => {
       evt.preventDefault()
       dispatch(logout())
     },
-    handleSubmit(evt, user) {
-      const id = user.id
-      evt.preventDefault()
-      const firstName = evt.target.firstName.value
-      const lastName = evt.target.lastName.value
-      const age = evt.target.age.value
-      const imageUrl = evt.target.imageUrl.value
-      const description = evt.target.description.value
-
+    async uploadS3Image(file) {
+      console.log('Inside upload S3Image', file)
+      await dispatch(uploadS3Image(file))
+    },
+    updateUser(id, firstName, lastName, imageUrl, age, description) {
+      console.log('Inside Updating user ')
       dispatch(
         updateUser({
           id,
