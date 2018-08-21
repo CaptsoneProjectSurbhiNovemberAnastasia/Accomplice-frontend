@@ -10,16 +10,15 @@ class UserProfile extends Component {
   componentDidMount() {
     this.props.loadUserData(this.props.user.id)
     this.setState({
-      firstName: this.props.user.firstName,
-      lastName: this.props.user.lastName,
-      age: this.props.user.age,
-      description: this.props.user.description,
+      firstName: this.props.user.firstName || '',
+      lastName: this.props.user.lastName || '',
+      age: this.props.user.age || 0,
+      description: this.props.user.description || '',
     })
   }
 
   constructor(props) {
     super(props)
-    // this.handleFileUpload = this.handleFileUpload.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
       firstName: '',
@@ -31,10 +30,6 @@ class UserProfile extends Component {
       options: false,
     }
   }
-  // async handleFileUpload(evt) {
-  //   evt.preventDefault()
-  //   await this.setState({ image: evt.target.files })
-  // }
 
   handleChange = evt => {
     evt.preventDefault()
@@ -150,9 +145,11 @@ const mapDispatch = dispatch => {
       evt.preventDefault()
       dispatch(logout())
     },
+
     async uploadS3Image(file) {
       await dispatch(uploadS3Image(file))
     },
+
     updateUser(id, firstName, lastName, imageUrl, age, description) {
       dispatch(
         updateUser({
@@ -165,6 +162,7 @@ const mapDispatch = dispatch => {
         })
       )
     },
+
     loadUserData: id => {
       dispatch(fetchMatches(id))
       dispatch(fetchTags())
