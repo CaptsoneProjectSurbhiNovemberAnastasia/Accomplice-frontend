@@ -5,6 +5,7 @@ import { updateUser } from '../store/user'
 import { NavLink } from 'react-router-dom'
 import UserProfileForm from './UserProfileForm'
 
+
 class UserProfile extends Component {
   state = { editing: false, options: false }
   render() {
@@ -15,10 +16,20 @@ class UserProfile extends Component {
       return null
     }
     return (
-      <div className="form nopadding">
+      <div>
+        {user.id && !user.firstName ?
+        <div>
+          <h2>Welcome to Accomplice!</h2>
+          <h4>Please edit your profile below before taking our personality quiz and swipping for matches.</h4>
+        </div> :
+        <div>
+          <h2>Hi {user.firstName}!</h2>
+        </div>
+        }
+        <div className="form nopadding">
         <div className="form">
           <div className=" ">
-            <h2>Hi {user.firstName}!</h2>
+          {user.imageUrl === '#' ? <img src="/no_profile_pic.png" alt="" /> : <img src={user.imageUrl} alt="" />}
             <img src={user.imageUrl} alt="" />
           </div>
           <div>
@@ -42,6 +53,9 @@ class UserProfile extends Component {
                 Update Activity and Tags
               </button>
             </NavLink>
+            <NavLink to="/quiz" className="pt-2">
+              <button type="button" className="button">Retake Personality Quiz</button>
+            </NavLink>
             <button
               className="btnWidth"
               type="button"
@@ -50,6 +64,7 @@ class UserProfile extends Component {
               Logout
             </button>
           </div>
+        </div>
         </div>
       </div>
     )

@@ -38,9 +38,6 @@ class Options extends Component {
             </button>
           </div>
         )}
-        <NavLink to="/quiz" className="pt-2">
-          <button className="button">Retake Personality Quiz</button>
-        </NavLink>
       </div>
     )
   }
