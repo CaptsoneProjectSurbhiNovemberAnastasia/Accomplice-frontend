@@ -11,7 +11,7 @@ const UserProfileForm = props => {
       }}
     >
       <div className="form-row w-auto">
-        <div className="form-group col-sm-12 text-left">
+        <div className="form-group col-sm-12 text-left mb-0">
           <div className="">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -73,8 +73,8 @@ const UserProfileForm = props => {
               // defaultValue={user.description}
             />
           </div>
-          <div className="form-button row btnInline ">
-            <button className="btnWidth1 ml-3" type="submit">
+          <div className="form-button row marginRight ">
+            <button className="mb-1 mt-2 btnfontsize" type="submit">
               Save Changes
             </button>
           </div>

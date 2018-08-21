@@ -4,13 +4,17 @@ import { NavLink } from 'react-router-dom'
 const MatchedUser = props => {
   const { user } = props
   return (
-    <li key={user.id}>
-      <div>{user.firstName + ' ' + user.lastName}</div>
+    <div>
+      <li key={user.id}>
+        <div className="mt-5">
+          {user.firstName + ' ' + user.lastName}
 
-      <NavLink to={`/chat/${user.id}`}>
-        <button type="button">Chat!</button>
-      </NavLink>
-    </li>
+          <NavLink className="ml-4" to={`/chat/${user.id}`}>
+            <button type="button">Chat!</button>
+          </NavLink>
+        </div>
+      </li>
+    </div>
   )
 }
 

@@ -16,7 +16,7 @@ class Options extends Component {
     return (
       <div>
         <TagSelect
-          className="mb-2"
+          className="mb-2 mr-5 ml-5"
           text="You are seeing users doing things tagged with:"
           tagMethod={this.props.chooseTags}
           activity={false}
@@ -33,7 +33,7 @@ class Options extends Component {
               Your Activity is: {activity ? activity.name : 'Loading...'}
             </div>
             <button
-              className="button"
+              className="button mt-3"
               onClick={() => this.setState({ editingActivity: true })}
             >
               Edit Your Activity
@@ -48,6 +48,7 @@ class Options extends Component {
 const mapState = state => ({ activity: state.activity })
 const mapDispatch = dispatch => ({
   chooseTags: tags => dispatch(setTags(tags)),
+
   loadData: () => {
     dispatch(fetchTags())
     dispatch(fetchActivity())

@@ -55,7 +55,9 @@ class Chat extends Component {
     return (
       <div>
         <span>
-          <div id="talkjs-container" ref={c => (this.container = c)}>Loading...</div>
+          <div id="talkjs-container" ref={c => (this.container = c)}>
+            Loading...
+          </div>
         </span>
       </div>
     )
