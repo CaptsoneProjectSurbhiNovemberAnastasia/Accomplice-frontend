@@ -112,7 +112,7 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = (dispatch, ownProps) => ({
+const mapDispatch = (dispatch) => ({
   loadMatches: async id => {
     await dispatch(fetchSuggestedMatches(id))
   },

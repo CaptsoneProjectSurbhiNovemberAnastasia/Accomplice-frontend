@@ -83,12 +83,10 @@ export const facebookauth = (
       firstName,
       imageUrl,
     })
-    console.log('Response from facebook is ', res)
   } catch (authError) {
     return dispatch(getUser({ error: authError }))
   }
   try {
-    console.log('passing data  ', res.data)
     dispatch(getUser(res.data))
     if (res.data.firstName === null) {
       history.push('/profile')
@@ -112,7 +110,6 @@ export const logout = () => async dispatch => {
 // editUser expects the state's currentUser.id, and updated info to be prepackaged into a single, nested object
 export const updateUser = updateInfo => async dispatch => {
   try {
-    console.log(updateInfo)
     const id = updateInfo.id
     const { data } = await axios.put(
       `${process.env.REACT_APP_API_URL}api/user/${id}`,
