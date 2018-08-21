@@ -24,7 +24,9 @@ export const matchWith = id => async dispatch => {
     )
     if (data !== 'OK') {
       dispatch(addMatch(data))
-      //alert('match')
+
+    } else {
+      dispatch(getMatches(data))
     }
   } catch (e) {
     console.error(e)

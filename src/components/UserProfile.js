@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { logout } from '../store'
+import { logout, fetchMatches, fetchTags, fetchActivity, me } from '../store'
 import { updateUser } from '../store/user'
 import { NavLink } from 'react-router-dom'
 import UserProfileForm from './UserProfileForm'
 import { uploadS3Image } from '../store/awsupload'
 
-
 class UserProfile extends Component {
+  componentDidMount() {
+    this.props.loadUserData(this.props.user.id)
+  }
   constructor(props) {
     super(props)
     this.handleFileUpload = this.handleFileUpload.bind(this)
@@ -44,56 +46,66 @@ class UserProfile extends Component {
     }
     return (
       <div>
-        {user.id && !user.firstName ?
-        <div>
-          <h2>Welcome to Accomplice!</h2>
-          <h4>Please edit your profile below before taking our personality quiz and swiping for matches.</h4>
-        </div> :
-        <div>
-          <h2>Hi {user.firstName}!</h2>
-        </div>
-        }
-        <div className="form nopadding">
-        <div className="form">
-          <div className=" ">
-          {user.imageUrl === '#' ? <img src="/no_profile_pic.png" alt="" /> : <img src={user.imageUrl} alt="" />}
-          </div>
+        {user.id && !user.firstName ? (
           <div>
-            <button
-              className="mb-2 mt-2"
-              type="button"
-              onClick={() => this.setState({ editing: !editing })}
-            >
-              {editing ? 'Done' : 'Edit Profile'}{' '}
-            </button>
-            {editing ? (
-              <UserProfileForm
-                user={user}
-                handleSubmit={this.handleSubmit}
-                file={this.state.file1}
-                handleFileUpload={this.handleFileUpload}
-              />
-            ) : (
-              <div className="mb-2" />
-            )}
-            <NavLink to="/options">
-              <button type="button" className="button">
-                Change Activity and Tags
-              </button>
-            </NavLink>
-            {}
-            <NavLink to="/quiz" className="pt-2">
-              <button type="button" className="button">Personality Quiz</button>
-            </NavLink>
-            <button
-              className="btnWidth"
-              type="button"
-              onClick={this.props.handleClick}
-            >
-              Logout
-            </button>
+            <h2>Welcome to Accomplice!</h2>
+            <h4>
+              Please edit your profile below before taking our personality quiz
+              and swiping for matches.
+            </h4>
           </div>
-        </div>
+        ) : (
+          <div>
+            <h2>Hi {user.firstName}!</h2>
+          </div>
+        )}
+        <div className="form nopadding">
+          <div className="form">
+            <div className=" ">
+              {user.imageUrl === '#' ? (
+                <img src="/no_profile_pic.png" alt="" />
+              ) : (
+                <img src={user.imageUrl} alt="" />
+              )}
+            </div>
+            <div>
+              <button
+                className="mb-2 mt-2"
+                type="button"
+                onClick={() => this.setState({ editing: !editing })}
+              >
+                {editing ? 'Done' : 'Edit Profile'}{' '}
+              </button>
+              {editing ? (
+                <UserProfileForm
+                  user={user}
+                  handleSubmit={this.handleSubmit}
+                  file={this.state.file1}
+                  handleFileUpload={this.handleFileUpload}
+                />
+              ) : (
+                <div className="mb-2" />
+              )}
+              <NavLink to="/options">
+                <button type="button" className="button">
+                  Change Activity and Tags
+                </button>
+              </NavLink>
+              {}
+              <NavLink to="/quiz" className="pt-2">
+                <button type="button" className="button">
+                  Personality Quiz
+                </button>
+              </NavLink>
+              <button
+                className="btnWidth"
+                type="button"
+                onClick={this.props.handleClick}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -103,7 +115,7 @@ class UserProfile extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    s3ImageUrl: state.awsupload
+    s3ImageUrl: state.awsupload,
   }
 }
 
@@ -124,10 +136,16 @@ const mapDispatch = dispatch => {
           lastName,
           imageUrl,
           age,
-          description
+          description,
         })
       )
-    }
+    },
+    loadUserData: id => {
+      dispatch(fetchMatches(id))
+      dispatch(fetchTags())
+      dispatch(fetchActivity())
+      dispatch(me())
+    },
   }
 }
 

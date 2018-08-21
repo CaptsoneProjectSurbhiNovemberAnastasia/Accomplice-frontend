@@ -65,7 +65,9 @@ export const auth = (email, password, method) => async dispatch => {
   }
   try {
     dispatch(getUser(res.data))
-    history.push('/question')
+    res.data.firstName === null
+      ? history.push('/profile')
+      : history.push('/question')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
