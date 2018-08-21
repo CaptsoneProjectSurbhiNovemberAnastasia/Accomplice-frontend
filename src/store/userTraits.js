@@ -10,11 +10,14 @@ const getTraitValues = userTraits => ({
 
 export const setTraitValues = userTraitValues => async dispatch => {
   try {
-    const { data } = await axios.post(`${process.env.REACT_APP_API_URL}api/user/traits`, {
-      userTraitValues,
-    })
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API_URL}api/user/traits`,
+      {
+        userTraitValues,
+      }
+    )
     dispatch(getTraitValues(data))
-    history.push('/options')
+    history.push('/profile')
   } catch (err) {
     console.error(err)
   }
