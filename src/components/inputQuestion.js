@@ -3,7 +3,7 @@ import { withRouter } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import CurrentLocation from './currentLocation'
 import Activity from './Activity'
-import { fetchMatches, fetchTags, fetchActivity } from '../store'
+import { fetchMatches, fetchTags, fetchActivity, me } from '../store'
 import { connect } from 'react-redux'
 
 class InputQuestion extends Component {
@@ -36,6 +36,7 @@ const mapDispatch = dispatch => ({
     dispatch(fetchMatches(id))
     dispatch(fetchTags())
     dispatch(fetchActivity())
+    dispatch(me())
   },
 })
 
