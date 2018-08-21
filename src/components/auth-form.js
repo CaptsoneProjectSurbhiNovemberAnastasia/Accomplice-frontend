@@ -45,13 +45,13 @@ const AuthForm = props => {
                 <label htmlFor="email">
                   <small>Email</small>
                 </label>
-                <input name="email" type="text" />
+                <input name="email" type="text" className="bgcolor" />
               </div>
               <div className="group">
                 <label htmlFor="password">
                   <small>Password</small>
                 </label>
-                <input name="password" type="password" />
+                <input name="password" type="password" className="bgcolor" />
               </div>
               <div className="group">
                 {error ? 'Please enter valid email and password' : null}
@@ -112,7 +112,7 @@ const AuthForm = props => {
 }
 
 const mapState = state => ({
-  error: state.user.error
+  error: state.user.error,
 })
 
 const mapDispatch = dispatch => ({
@@ -129,7 +129,7 @@ const mapDispatch = dispatch => ({
     const imageUrl = response.picture.data.url
 
     dispatch(facebookauth(email, name, imageUrl, type))
-  }
+  },
 })
 
 export default withRouter(

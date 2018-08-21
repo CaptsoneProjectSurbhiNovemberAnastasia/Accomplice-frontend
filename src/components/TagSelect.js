@@ -41,7 +41,7 @@ class TagSelect extends Component {
         <div htmlFor="question col-6">{text}</div>
         <div className="inlineBtn">
           <Select
-            className="mb-2 mt-2"
+            className="mb-2 mt-2 mr-5 ml-5"
             value={selectedOptions}
             onChange={this.handleChange}
             options={options}
