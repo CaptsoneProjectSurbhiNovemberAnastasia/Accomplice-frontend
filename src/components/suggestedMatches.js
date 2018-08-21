@@ -55,6 +55,7 @@ class SuggestedMatches extends Component {
       match,
       loadMatches,
       matchWithUser,
+      matches,
     } = this.props
     let filteredSuggestedMatches = this.filterSuggestedMatches(
       suggestedMatches,
@@ -92,6 +93,9 @@ class SuggestedMatches extends Component {
                 }}
                 onSwipeRight={() => {
                   matchWithUser(user.id)
+                  if (matches.some(match => match.id === user.id)) {
+                    console.log(`you matched with ${user.firstName}!`)
+                  }
                 }}
               >
                 <UserCard key={user.id} user={user} />
@@ -110,10 +114,11 @@ const mapState = state => {
     currentUser: state.user,
     tags: state.tags,
     activity: state.activity,
+    matches: state.matches,
   }
 }
 
-const mapDispatch = (dispatch) => ({
+const mapDispatch = dispatch => ({
   loadMatches: async id => {
     await dispatch(fetchSuggestedMatches(id))
   },
