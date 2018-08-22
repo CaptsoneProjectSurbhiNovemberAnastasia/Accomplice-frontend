@@ -48,7 +48,7 @@ class Activity extends Component {
         </form>
         <div className="selectWidth">
           <TagSelect
-            className="mb-2 mr-5 ml-5"
+            className="mb-2 widthMed"
             text="Tag your activity: "
             tagMethod={this.props.chooseActivityTags}
             activity={true}

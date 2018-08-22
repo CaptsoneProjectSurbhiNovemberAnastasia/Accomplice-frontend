@@ -33,7 +33,7 @@ class UserCard extends Component {
           <li className="text-justify-center">
             <h4>{user.firstName + ' ' + user.lastName}</h4>
             <p>{user.description}</p>
-            <p>
+            <p className="font-weight-bold h5">
               {user.firstName}{' '}
               {user.activityId
                 ? `wants to ${
