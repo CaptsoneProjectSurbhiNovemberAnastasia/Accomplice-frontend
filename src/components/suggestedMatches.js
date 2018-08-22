@@ -79,7 +79,7 @@ class SuggestedMatches extends Component {
         <Cards
           alertRight={<CustomAlertRight />}
           alertLeft={<CustomAlertLeft />}
-          onEnd={() => loadMatches()}
+          onEnd={() => loadMatches(currentUser.id)}
           className="master-root"
         >
           {!filteredSuggestedMatches ? (
