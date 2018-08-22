@@ -93,7 +93,7 @@ class UserProfile extends Component {
             <div className="imgsize ">
               <img src={user.imageUrl} />
             </div>
-            <div className="mr-4">
+            <div>
               <button
                 className="mb-1 mt-1 btnfontsize"
                 type="button"
