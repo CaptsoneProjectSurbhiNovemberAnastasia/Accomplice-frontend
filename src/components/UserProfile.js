@@ -14,7 +14,7 @@ class UserProfile extends Component {
       lastName: this.props.user.lastName || '',
       age: this.props.user.age || 0,
       description: this.props.user.description || '',
-      imageUrl: this.props.user.imageUrl || ''
+      imageUrl: this.props.user.imageUrl || '',
     })
   }
 
@@ -57,7 +57,14 @@ class UserProfile extends Component {
       imageUrlToUse = this.props.s3ImageUrl
     }
 
-    this.props.updateUser(id, firstName, lastName, imageUrlToUse, age, description)
+    this.props.updateUser(
+      id,
+      firstName,
+      lastName,
+      imageUrlToUse,
+      age,
+      description
+    )
   }
 
   render() {
@@ -86,7 +93,7 @@ class UserProfile extends Component {
             <div className="imgsize ">
               <img src={user.imageUrl} />
             </div>
-            <div>
+            <div className="mr-4">
               <button
                 className="mb-1 mt-1 btnfontsize"
                 type="button"

@@ -53,15 +53,15 @@ h2 {
 .selectInline {
   display: inline;
 }
-
+/*
 .selectWidth {
   width: 60%;
   margin-left: 20%;
-}
+} */
 
 #talkjs-container {
   width: 90%;
-  margin: 30px;
+  margin: 20px;
   height: 500px;
 }
 
@@ -112,10 +112,10 @@ h2 {
 }
 .row {
   /* margin: 15px !important; */
-  margin-left: 60px !important;
+  margin-left: 28px;
 }
 .marginRight {
-  margin-right: -30px !important;
+  margin-right: -25px !important;
 }
 .goBtn {
   background-color: #782fff !important;
@@ -494,6 +494,7 @@ h2 {
   background: white;
   width: calc(285px + 10vw);
   padding: 40px;
+  /* margin: 15px; */
 }
 .form .img-container {
   display: flex;
@@ -838,6 +839,10 @@ input[type='checkbox']:checked {
   font-family: 'Montserrat', sans-serif;
   font-size: 22px;
 }
+.widthMed {
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
 .userProfile .userButtons button {
   border: none;
   border-radius: 25px;
@@ -1108,6 +1113,10 @@ h2 {
     font-size: 1.5rem;
   }
 
+  .selectWidth {
+    width: 60%;
+    margin-left: 20%;
+  }
   .geoLoc {
     border-radius: 15px;
     cursor: pointer;
@@ -1128,7 +1137,8 @@ h2 {
     margin-left: -20px !important;
   }
   .marginRight {
-    margin-left: 25px !important;
+    margin-left: 35px !important;
+    margin-right: -32px !important;
   }
   .inlineBtn {
     display: inline;
@@ -1192,6 +1202,10 @@ h2 {
     width: 216px;
     margin: 25px 10px 25px 10px;
     text-align: left;
+  }
+  #userCard {
+    margin-left: 10% !important;
+    margin-right: 10% !important;
   }
 }
 @media (max-width: 767.98px) {
