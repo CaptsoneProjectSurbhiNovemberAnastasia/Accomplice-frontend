@@ -15,14 +15,9 @@ class InputQuestion extends Component {
       <div id="questionForm">
         <Activity />
         <div className="group row">
-          <NavLink to="/suggestedmatches">See people to match with!</NavLink>
+          <NavLink to="/suggestedmatches">Don't know? Get Swiping!</NavLink>
         </div>
 
-        <div className="group row">
-          <label htmlFor="question">
-            <NavLink to="/undecided">Don't know... get a clue!</NavLink>
-          </label>
-        </div>
         <CurrentLocation />
       </div>
     )

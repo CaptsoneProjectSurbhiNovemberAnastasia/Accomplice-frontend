@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Cards, { Card } from 'react-swipe-card'
 import { fetchSuggestedMatches, matchWith } from '../store'
 import UserCard from './UserCard'
+import { Alert } from 'reactstrap'
 
 const CustomAlertLeft = () => (
   <span>
@@ -16,6 +17,10 @@ const CustomAlertRight = () => (
 )
 
 class SuggestedMatches extends Component {
+  state = {
+    alert: false
+  }
+
   componentDidMount() {
     this.props.loadMatches(this.props.currentUser.id)
   }
@@ -76,6 +81,9 @@ class SuggestedMatches extends Component {
     return (
       <div className="container">
         <div />
+        {
+          this.state.alert ? alert('match') : null
+        }
         <Cards
           alertRight={<CustomAlertRight />}
           alertLeft={<CustomAlertLeft />}
@@ -94,7 +102,7 @@ class SuggestedMatches extends Component {
                 onSwipeRight={() => {
                   matchWithUser(user.id)
                   if (matches.some(match => match.id === user.id)) {
-                    console.log(`you matched with ${user.firstName}!`)
+                    this.setState({ alert: true})
                   }
                 }}
               >
